@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Casts\LevelAccount;
 use App\Casts\ScheduleType;
 use App\Casts\StatusAccount;
 use Closure;
@@ -40,115 +41,45 @@ class Gateway
                     ]);
                 });
 
-                if ($level == 0){
+                if ($level == LevelAccount::ADMIN){
                     Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
                         $e->menu->add([
-                            "text"=>"Data Ruangan",
-                            "url"=>"master/ruangan",
+                            "text"=>"Data Suplier",
+                            "url"=>"master/suplier",
                             "icon"=>"fa fa-file"
                         ]);
                         $e->menu->add([
-                            "text"=>"Data Dosen",
-                            "url"=>"master/dosen",
+                            "text"=>"Data Ukuran",
+                            "url"=>"master/size",
                             "icon"=>"fa fa-file"
                         ]);
                         $e->menu->add([
-                            "text"=>"Data Mahasiswa",
-                            "url"=>"master/mahasiswa",
+                            "text"=>"Data Material",
+                            "url"=>"master/material",
                             "icon"=>"fa fa-file"
                         ]);
                         $e->menu->add([
-                            "text"=>"Data Sekretariat",
-                            "url"=>"master/sekretariat",
+                            "text"=>"Data Produk",
+                            "url"=>"master/produk",
                             "icon"=>"fa fa-file"
                         ]);
-//                        $e->menu->add([
-//                            "text"=>"Data Administrator",
-//                            "url"=>"master/administrator",
-//                            "icon"=>"fa fa-file"
-//                        ]);
+                        $e->menu->add([
+                            "text"=>"Data Akun",
+                            "url"=>"master/akun",
+                            "icon"=>"fa fa-file"
+                        ]);
 
                     });
-                }elseif ($level == 1){
-                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
-                        $e->menu->add([
-                            "text"=>"Penjadwalan Seminar",
-                            "url"=>"seminar",
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Penjadwalan Sidang Usulan",
-                            "url"=>"sidang?type=".ScheduleType::SIDANG_USULAN,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Penjadwalan Sidang Komprehensif",
-                            "url"=>"sidang?type=".ScheduleType::SIDANG_KOMPREHENSIF,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Penjadwalan Sidang Akhir",
-                            "url"=>"sidang?type=".ScheduleType::SIDANG_AKHIR,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-//                        $e->menu->add([
-//                            "text"=>"Laporan",
-//                            "url"=>"cetak",
-//                            "icon"=>"fa fa-file"
-//                        ]);
-                    });
-                }elseif ($level == 2){
-                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
+                }elseif ($level == LevelAccount::PEMILIK){
 
-                        $e->menu->add([
-                            "text"=>"Jadwal Seminar",
-                            "url"=>"jadwal?type=".ScheduleType::SEMINAR,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Jadwal Sidang Usulan",
-                            "url"=>"jadwal?type=".ScheduleType::SIDANG_USULAN,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Jadwal Sidang Komprehensif",
-                            "url"=>"jadwal?type=".ScheduleType::SIDANG_KOMPREHENSIF,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Jadwal Sidang Akhir",
-                            "url"=>"jadwal?type=".ScheduleType::SIDANG_AKHIR,
-                            "icon"=>"fa fa-calendar"
-                        ]);
+                }elseif ($level == LevelAccount::GUDANG){
+
+                }elseif ($level == LevelAccount::PRODUKSI){
 
 
-                    });
-                }elseif ($level == 3){
-                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
-
-                        $e->menu->add([
-                            "text"=>"Jadwal Seminar",
-                            "url"=>"jadwal?type=".ScheduleType::SEMINAR,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Jadwal Sidang Usulan",
-                            "url"=>"jadwal?type=".ScheduleType::SIDANG_USULAN,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Jadwal Sidang Komprehensif",
-                            "url"=>"jadwal?type=".ScheduleType::SIDANG_KOMPREHENSIF,
-                            "icon"=>"fa fa-calendar"
-                        ]);
-                        $e->menu->add([
-                            "text"=>"Jadwal Sidang Akhir",
-                            "url"=>"jadwal?type=".ScheduleType::SIDANG_AKHIR,
-                            "icon"=>"fa fa-calendar"
-                        ]);
+                }elseif ($level == LevelAccount::PELANGGAN0){
 
 
-                    });
                 }
 
                 Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){

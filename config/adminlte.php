@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'Penjadwalan',
-    'title_prefix' => 'SIJADWAL - ',
+    'title' => 'Rumah Retro',
+    'title_prefix' => 'Rumah Retro - ',
     'title_postfix' => '',
 
     /*

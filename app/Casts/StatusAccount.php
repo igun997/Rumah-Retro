@@ -4,7 +4,7 @@ namespace App\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
-class StatusAccount implements CastsAttributes
+class StatusAccount
 {
     CONST INACTIVE = 0;
     CONST ACTIVE = 1;

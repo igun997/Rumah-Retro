@@ -12,141 +12,72 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get("/","Auth@index")->name("login");
+Route::namespace("Store")->name("store.")->group(function (){
+    Route::get("/","Landing@index")->name("landing");
+});
+Route::get("/login","Auth@index")->name("login");
 Route::get("/template",function (){
     return view("template.jadwal");
 });
 Route::post("/login","Auth@login")->name("login.post");
-Route::get("/logout","Auth@logout")->name("login");
-Route::prefix("/template")->name("template.")->group(function (){
-    Route::get("/ruangan","Utility@excel_template_ruangan")->name("ruangan");
-    Route::get("/dosen","Utility@excel_template_dosen")->name("dosen");
-    Route::get("/mahasiswa","Utility@excel_template_mahasiswa")->name("mahasiswa");
-    Route::get("/sekretariat","Utility@excel_template_sekretariat")->name("sekretariat");
-    Route::get("/seminar","Utility@excel_template_seminar")->name("seminar");
-    Route::get("/sidang","Utility@excel_template_sidang")->name("sidang");
-});
+Route::get("/logout","Auth@logout")->name("logout");
 
-Route::get("/dashboard","Dashboard@index")->middleware("gateway:0|1|2|3")->name("dashboard");
+
+Route::get("/dashboard","Dashboard@index")->middleware("gateway:0|1|2|3|4")->name("dashboard");
 //Admin
-Route::prefix("master")->middleware("gateway:0")->name("master.")->namespace("Master")->group(function(){
-    Route::prefix("ruangan")->name("ruangan.")->group(function (){
-        Route::get("/","Ruangan@index")->name("list");
 
-        Route::get("/add","Ruangan@add")->name("add");
-        Route::post("/add","Ruangan@add_action")->name("add.action");
-
-        Route::get("/update/{id}","Ruangan@update")->name("update");
-        Route::post("/update/{id}","Ruangan@update_action")->name("update.action");
-
-        Route::get("/delete/{id}","Ruangan@delete")->name("delete");
+Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
+    Route::prefix("suplier")->name("suplier.")->group(function (){
+        Route::get("/","Suplier@index")->name("list");
+        Route::get("/add","Suplier@add")->name("add");
+        Route::get("/update/{id}","Suplier@update")->name("update");
+        Route::get("/delete/{id}","Suplier@delete")->name("delete");
+        Route::post("/update/{id}","Suplier@update_action")->name("update_action");
+        Route::post("/add","Suplier@add_action")->name("add_action");
     });
 
-    Route::prefix("dosen")->name("dosen.")->group(function (){
-        Route::get("/","Dosen@index")->name("list");
-
-        Route::get("/add","Dosen@add")->name("add");
-        Route::post("/add","Dosen@add_action")->name("add.action");
-
-        Route::get("/update/{id}","Dosen@update")->name("update");
-        Route::post("/update/{id}","Dosen@update_action")->name("update.action");
-
-        Route::get("/delete/{id}","Dosen@delete")->name("delete");
+    Route::prefix("size")->name("size.")->group(function (){
+        Route::get("/","Sizes@index")->name("list");
+        Route::get("/add","Sizes@add")->name("add");
+        Route::get("/update/{id}","Sizes@update")->name("update");
+        Route::get("/delete/{id}","Sizes@delete")->name("delete");
+        Route::post("/update/{id}","Sizes@update_action")->name("update_action");
+        Route::post("/add","Sizes@add_action")->name("add_action");
     });
 
-    Route::prefix("mahasiswa")->name("mahasiswa.")->group(function (){
-        Route::get("/","Mahasiswa@index")->name("list");
-
-        Route::get("/add","Mahasiswa@add")->name("add");
-        Route::post("/add","Mahasiswa@add_action")->name("add.action");
-
-        Route::get("/update/{id}","Mahasiswa@update")->name("update");
-        Route::post("/update/{id}","Mahasiswa@update_action")->name("update.action");
-
-        Route::get("/delete/{id}","Mahasiswa@delete")->name("delete");
+    Route::prefix("material")->name("material.")->group(function (){
+        Route::get("/","Material@index")->name("list");
+        Route::get("/add","Material@add")->name("add");
+        Route::get("/update/{id}","Material@update")->name("update");
+        Route::get("/delete/{id}","Material@delete")->name("delete");
+        Route::post("/update/{id}","Material@update_action")->name("update_action");
+        Route::post("/add","Material@add_action")->name("add_action");
     });
 
-    Route::prefix("sekretariat")->name("sekretariat.")->group(function (){
-        Route::get("/","Sekretariat@index")->name("list");
 
-        Route::get("/add","Sekretariat@add")->name("add");
-        Route::post("/add","Sekretariat@add_action")->name("add.action");
+    Route::prefix("product")->name("product.")->group(function (){
+        Route::get("/","Product@index")->name("list");
+        Route::get("/add","Product@add")->name("add");
+        Route::get("/update/{id}","Product@update")->name("update");
+        Route::get("/delete/{id}","Product@delete")->name("delete");
+        Route::post("/update/{id}","Product@update_action")->name("update_action");
+        Route::post("/add","Product@add_action")->name("add_action");
 
-        Route::get("/update/{id}","Sekretariat@update")->name("update");
-        Route::post("/update/{id}","Sekretariat@update_action")->name("update.action");
+        Route::get("/add/{id}/material","Product@add_material")->name("add_material");
+        Route::get("/update/{id}/material","Product@update_material")->name("update_material");
+        Route::post("/add/{id}/material","Product@add_material_action")->name("add_material_action");
+        Route::post("/update/{id}/material","Product@update_material_action")->name("update_material_action");
 
-        Route::get("/delete/{id}","Sekretariat@delete")->name("delete");
     });
 
-    Route::prefix("administrator")->name("administrator.")->group(function (){
-        Route::get("/","Administrator@index")->name("list");
-
-        Route::get("/add","Administrator@add")->name("add");
-        Route::post("/add","Administrator@add_action")->name("add.action");
-
-        Route::get("/update/{id}","Administrator@update")->name("update");
-        Route::post("/update/{id}","Administrator@update_action")->name("update.action");
-
-        Route::get("/delete/{id}","Administrator@delete")->name("delete");
+    Route::prefix("account")->name("account.")->group(function (){
+        Route::get("/","Account@index")->name("list");
+        Route::get("/add","Account@add")->name("add");
+        Route::get("/update/{id}","Account@update")->name("update");
+        Route::get("/delete/{id}","Account@delete")->name("delete");
+        Route::post("/update/{id}","Account@update_action")->name("update_action");
+        Route::post("/add","Account@add_action")->name("add_action");
     });
 });
-//Sekretariat
 
 
-Route::prefix("penguji")->middleware("gateway:1")->name("penguji.")->namespace("Penjadwalan")->group(function (){
-    Route::get("/","Penguji@index")->name("list");
-
-    Route::get("/add","Penguji@add")->name("add");
-    Route::post("/add","Penguji@add_action")->name("add.action");
-
-    Route::get("/update/{id}","Penguji@update")->name("update");
-    Route::post("/update/{id}","Penguji@update_action")->name("update.action");
-
-    Route::get("/delete/{id}","Penguji@delete")->name("delete");
-});
-
-Route::prefix("seminar")->middleware("gateway:1")->name("seminar.")->namespace("Penjadwalan")->group(function (){
-    Route::get("/","Seminar@index")->name("list");
-
-    Route::get("/add","Seminar@add")->name("add");
-    Route::post("/add","Seminar@add_action")->name("add.action");
-
-    Route::get("/update/{id}","Seminar@update")->name("update");
-    Route::post("/update/{id}","Seminar@update_action")->name("update.action");
-
-    Route::get("/delete/{id}","Seminar@delete")->name("delete");
-
-    Route::get("/view","Seminar@view")->name("view");
-    Route::get("/config","Seminar@configView")->name("view.config");
-    Route::get("/update_status","Seminar@updateStatus")->name("config.update_status");
-});
-
-
-Route::prefix("sidang")->middleware("gateway:1")->name("sidang.")->namespace("Penjadwalan")->group(function (){
-    Route::get("/","Sidang@index")->name("list");
-
-    Route::get("/add","Sidang@add")->name("add");
-    Route::post("/add","Sidang@add_action")->name("add.action");
-
-    Route::get("/update/{id}","Sidang@update")->name("update");
-    Route::post("/update/{id}","Sidang@update_action")->name("update.action");
-
-    Route::get("/delete/{id}","Sidang@delete")->name("delete");
-
-    Route::get("/view","Sidang@view")->name("view");
-    Route::get("/config","Sidang@configView")->name("view.config");
-    Route::get("/update_status","Sidang@updateStatus")->name("config.update_status");
-});
-//Siswa
-Route::prefix("jadwal")->middleware("gateway:2|3")->namespace("Jadwal")->name("jadwal.")->group(function (){
-    Route::get("/","Penjadwalan@index")->name("list");
-});
-
-
-
-Route::prefix("cetak")->middleware("gateway:1")->namespace("Cetak")->name("cetak")->group(function(){
-    Route::get("/","Cetak@index")->name("list");
-    Route::get("/jadwal","Cetak@jadwal")->name("jadwal");
-
-});

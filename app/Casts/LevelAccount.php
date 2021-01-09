@@ -2,9 +2,8 @@
 
 namespace App\Casts;
 
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
-class LevelAccount implements CastsAttributes
+class LevelAccount
 {
     const  ADMIN = 0;
     const  PEMILIK = 1;
