@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Created by Reliese Model.
+ */
+
+namespace App\Models;
+
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class Product
+ * 
+ * @property int $id
+ * @property string $name
+ * @property float $price
+ * @property string|null $deskripsi
+ * @property string|null $img
+ * @property int $size_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * 
+ * @property Size $size
+ * @property Collection|OrderItem[] $order_items
+ * @property Collection|Material[] $materials
+ *
+ * @package App\Models
+ */
+class Product extends Model
+{
+	protected $table = 'products';
+
+	protected $casts = [
+		'price' => 'float',
+		'size_id' => 'int'
+	];
+
+	protected $fillable = [
+		'name',
+		'price',
+		'deskripsi',
+		'img',
+		'size_id'
+	];
+
+	public function size()
+	{
+		return $this->belongsTo(Size::class);
+	}
+
+	public function order_items()
+	{
+		return $this->hasMany(OrderItem::class);
+	}
+
+	public function materials()
+	{
+		return $this->belongsToMany(Material::class, 'product_materials')
+					->withPivot('id', 'qty');
+	}
+}

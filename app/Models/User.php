@@ -15,17 +15,17 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $id
  * @property string $name
+ * @property string|null $alamat
+ * @property string $email
+ * @property string|null $no_hp
  * @property string $username
  * @property string $password
- * @property string|null $kelas
- * @property string|null $semester
- * @property int $level
  * @property int $status
- * @property Carbon $created_at
- * @property Carbon $updated_at
+ * @property int $level
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * 
- * @property Collection|Schedule[] $schedules
- * @property Collection|Supervisor[] $supervisors
+ * @property Collection|Order[] $orders
  *
  * @package App\Models
  */
@@ -34,8 +34,8 @@ class User extends Model
 	protected $table = 'users';
 
 	protected $casts = [
-		'level' => 'int',
-		'status' => 'int'
+		'status' => 'int',
+		'level' => 'int'
 	];
 
 	protected $hidden = [
@@ -44,21 +44,17 @@ class User extends Model
 
 	protected $fillable = [
 		'name',
+		'alamat',
+		'email',
+		'no_hp',
 		'username',
 		'password',
-		'kelas',
-		'semester',
-		'level',
-		'status'
+		'status',
+		'level'
 	];
 
-	public function schedules()
+	public function orders()
 	{
-		return $this->hasMany(Schedule::class);
-	}
-
-	public function supervisors()
-	{
-		return $this->hasMany(Supervisor::class);
+		return $this->hasMany(Order::class);
 	}
 }
