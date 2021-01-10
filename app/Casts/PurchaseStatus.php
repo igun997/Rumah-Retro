@@ -16,7 +16,7 @@ class PurchaseStatus
     public static function lang($level)
     {
         if ($level == self::CREATED){
-            return "Dibuat";
+            return "Menunggu Konfirmasi Pemilik";
         }elseif ($level == self::CONFIRMED){
             return "Pengadaan Di Konfirmasi Pemilik";
         }elseif ($level == self::PROCESSING){

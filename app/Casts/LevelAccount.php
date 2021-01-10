@@ -10,6 +10,7 @@ class LevelAccount
     const  GUDANG = 2;
     const  PRODUKSI = 3;
     const  PELANGGAN = 4;
+    const  KASIR = 5;
 
 
     public static function lang($level)
@@ -24,6 +25,8 @@ class LevelAccount
             return "Produksi";
         }elseif ($level == LevelAccount::PELANGGAN){
             return "Pelanggan";
+        }elseif ($level == LevelAccount::KASIR){
+            return "Kasir";
         }else{
             return  FALSE;
         }

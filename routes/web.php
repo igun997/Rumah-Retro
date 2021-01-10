@@ -23,7 +23,7 @@ Route::post("/login","Auth@login")->name("login.post");
 Route::get("/logout","Auth@logout")->name("logout");
 
 
-Route::get("/dashboard","Dashboard@index")->middleware("gateway:0|1|2|3|4")->name("dashboard");
+Route::get("/dashboard","Dashboard@index")->middleware("gateway:0|1|2|3|4|5")->name("dashboard");
 //Admin
 
 Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
@@ -79,6 +79,20 @@ Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
         Route::post("/update/{id}","Account@update_action")->name("update_action");
         Route::post("/add","Account@add_action")->name("add_action");
     });
+});
+
+Route::prefix("pemesanan")->name("pemesanan.")->group(function (){
+    Route::get("/","Pemesanan@index")->name("list");
+    Route::get("/add","Pemesanan@add")->name("add");
+    Route::post("/add_action","Pemesanan@add_action")->name("add_action");
+    Route::get("/material/{id}","Pemesanan@material")->name("material");
+    Route::post("/material/{id}","Pemesanan@material_action")->name("material_action");
+    Route::get("/material/{id}/delete/{ids}","Pemesanan@material_delete")->name("material_delete");
+    Route::get("/detail/{id}","Pemesanan@detail")->name("detail");
+    Route::get("/cancel/{id}","Pemesanan@cancel")->name("cancel");
+    Route::get("/proses/{id}","Pemesanan@proses")->name("proses");
+    Route::get("/sending/{id}","Pemesanan@sending")->name("sending");
+    Route::get("/done/{id}","Pemesanan@done")->name("done");
 });
 
 

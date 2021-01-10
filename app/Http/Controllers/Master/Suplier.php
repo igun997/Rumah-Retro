@@ -13,7 +13,7 @@ class Suplier extends Controller
     public function __construct()
     {
         $this->base = "master.suplier";
-        $this->middleware("gateway:0");
+        $this->middleware("gateway:0|2");
     }
 
     public function index()

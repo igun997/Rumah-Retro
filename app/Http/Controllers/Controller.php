@@ -11,9 +11,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function successRedirect(string $route_name,bool $is_add = true)
+    public function successRedirect(string $route_name,bool $is_add = true,$params =[])
     {
-        return redirect(route($route_name))->with(["msg"=>(($is_add)?"Sukses Tambah Data":"Sukses Update Data")]);
+        return redirect(route($route_name,$params))->with(["msg"=>(($is_add)?"Sukses Tambah Data":"Sukses Update Data")]);
     }
     public function successBack(bool $is_add = true)
     {

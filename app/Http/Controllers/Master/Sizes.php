@@ -13,7 +13,7 @@ class Sizes extends Controller
     public function __construct()
     {
         $this->base = "master.size";
-        $this->middleware("gateway:0");
+        $this->middleware("gateway:0|2");
     }
 
     public function index()

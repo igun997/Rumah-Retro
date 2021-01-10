@@ -71,14 +71,91 @@ class Gateway
 
                     });
                 }elseif ($level == LevelAccount::PEMILIK){
-
+                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
+                        $e->menu->add([
+                            "text" => "Pemesanan",
+                            "url" => "pemesanan",
+                            "icon" => "fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text" => "Laporan Pemesanan",
+                            "url" => "laporan/pemesanan",
+                            "icon" => "fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text" => "Laporan Bahan Baku",
+                            "url" => "laporan/bahan_baku",
+                            "icon" => "fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text" => "Laporan Penjualan",
+                            "url" => "laporan/penjualan",
+                            "icon" => "fa fa-file"
+                        ]);
+                    });
                 }elseif ($level == LevelAccount::GUDANG){
+                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
+                        $e->menu->add([
+                            "text"=>"Data Suplier",
+                            "url"=>"master/suplier",
+                            "icon"=>"fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text"=>"Data Ukuran",
+                            "url"=>"master/size",
+                            "icon"=>"fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text"=>"Data Material",
+                            "url"=>"master/material",
+                            "icon"=>"fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text"=>"Data Produk",
+                            "url"=>"master/produk",
+                            "icon"=>"fa fa-file"
+                        ]);
 
+                        $e->menu->add([
+                            "text"=>"Pemesanan Bahan Baku",
+                            "url"=>"pemesanan",
+                            "icon"=>"fa fa-file"
+                        ]);
+
+                        $e->menu->add([
+                            "text" => "Laporan Pemesanan",
+                            "url" => "laporan/pemesanan",
+                            "icon" => "fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text" => "Laporan Bahan Baku",
+                            "url" => "laporan/bahan_baku",
+                            "icon" => "fa fa-file"
+                        ]);
+
+                    });
                 }elseif ($level == LevelAccount::PRODUKSI){
+                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
+                        $e->menu->add([
+                            "text" => "Produksi",
+                            "url" => "produksi",
+                            "icon" => "fa fa-file"
+                        ]);
+                        $e->menu->add([
+                            "text" => "Laporan Produksi",
+                            "url" => "laporan/produksi",
+                            "icon" => "fa fa-file"
+                        ]);
+                    });
 
-
-                }elseif ($level == LevelAccount::PELANGGAN0){
-
+                }elseif ($level == LevelAccount::PELANGGAN){
+                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
+                        $e->menu->add([
+                            "text" => "Pesanan",
+                            "url" => "orders",
+                            "icon" => "fa fa-file"
+                        ]);
+                    });
 
                 }
 
