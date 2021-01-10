@@ -55,7 +55,7 @@ Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
     });
 
 
-    Route::prefix("product")->name("product.")->group(function (){
+    Route::prefix("produk")->name("product.")->group(function (){
         Route::get("/","Product@index")->name("list");
         Route::get("/add","Product@add")->name("add");
         Route::get("/update/{id}","Product@update")->name("update");
@@ -64,9 +64,10 @@ Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
         Route::post("/add","Product@add_action")->name("add_action");
 
         Route::get("/add/{id}/material","Product@add_material")->name("add_material");
-        Route::get("/update/{id}/material","Product@update_material")->name("update_material");
+        Route::get("/delete/material/{id}","Product@delete_material")->name("delete_material");
+        Route::get("/update/{id}/material/{id_second}","Product@update_material")->name("update_material");
         Route::post("/add/{id}/material","Product@add_material_action")->name("add_material_action");
-        Route::post("/update/{id}/material","Product@update_material_action")->name("update_material_action");
+        Route::post("/update/{id}/material/{id_second}","Product@update_material_action")->name("update_material_action");
 
     });
 

@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $updated_at
  * 
  * @property Collection|Material[] $materials
- * @property Collection|Product[] $products
  *
  * @package App\Models
  */
@@ -34,10 +33,5 @@ class Size extends Model
 	public function materials()
 	{
 		return $this->hasMany(Material::class);
-	}
-
-	public function products()
-	{
-		return $this->hasMany(Product::class);
 	}
 }

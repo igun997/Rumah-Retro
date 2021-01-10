@@ -18,11 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $price
  * @property string|null $deskripsi
  * @property string|null $img
- * @property int $size_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Size $size
  * @property Collection|OrderItem[] $order_items
  * @property Collection|Material[] $materials
  *
@@ -33,22 +31,15 @@ class Product extends Model
 	protected $table = 'products';
 
 	protected $casts = [
-		'price' => 'float',
-		'size_id' => 'int'
+		'price' => 'float'
 	];
 
 	protected $fillable = [
 		'name',
 		'price',
 		'deskripsi',
-		'img',
-		'size_id'
+		'img'
 	];
-
-	public function size()
-	{
-		return $this->belongsTo(Size::class);
-	}
 
 	public function order_items()
 	{

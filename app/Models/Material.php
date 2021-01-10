@@ -66,6 +66,15 @@ class Material extends Model
 					->withPivot('id', 'qty');
 	}
 
+    public function sisa()
+    {
+        $used = 0;
+        $_a = ProductMaterial::where(["material_id"=>$this->id])->get();
+        foreach ($_a as $index => $item) {
+            $used += $item->qty;
+        }
+        return $this->stok - $used;
+    }
 	public function purchases()
 	{
 		return $this->belongsToMany(Purchase::class, 'purchase_materials')
