@@ -11,7 +11,7 @@
         "php": "^7.4.9",
         "barryvdh/laravel-dompdf": "^0.8.6",
         "barryvdh/laravel-snappy": "^0.4.7",
-        "darryldecode/cart": "^4.1",
+        "darryldecode/cart": "^4.2",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "fx3costa/laravelchartjs": "^2.8",

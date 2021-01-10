@@ -17,6 +17,7 @@ class CreateOrderItemsTable extends Migration
             $table->integer('id', true);
             $table->integer('order_id')->index('order_id');
             $table->integer('product_id')->index('product_id');
+            $table->integer('qty')->nullable();
             $table->float('price', 10, 0);
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();

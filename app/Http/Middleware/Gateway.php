@@ -157,6 +157,15 @@ class Gateway
                         ]);
                     });
 
+                }elseif ($level == LevelAccount::KASIR){
+                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
+                        $e->menu->add([
+                            "text" => "Penjualan",
+                            "url" => "penjualan",
+                            "icon" => "fa fa-file"
+                        ]);
+                    });
+
                 }
 
                 Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){

@@ -95,4 +95,12 @@ Route::prefix("pemesanan")->name("pemesanan.")->group(function (){
     Route::get("/done/{id}","Pemesanan@done")->name("done");
 });
 
+Route::prefix("penjualan")->name("penjualan.")->group(function (){
+    Route::get("/","Penjualan@index")->name("list");
+    Route::post("/cart","Penjualan@cart_action")->name("cart_action");
+    Route::get("/cart","Penjualan@cart")->name("cart");
+    Route::get("/cart/delete/{id}","Penjualan@cart_delete")->name("cart_delete");
+    Route::post("/cart/finished","Penjualan@cart_finish")->name("cart_finish");
+});
+
 

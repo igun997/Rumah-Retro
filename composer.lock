@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e10b77e84fef8f187e5cbd8d8687d1d",
+    "content-hash": "9d0825d2c9aab52a40a4b44acffeaeb6",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -262,28 +262,28 @@
         },
         {
             "name": "darryldecode/cart",
-            "version": "4.1.2",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/darryldecode/laravelshoppingcart.git",
-                "reference": "8f227c052d041973c4d91bd77507098e9449d7ef"
+                "reference": "2ad23e070af341da80300ef990b1fb529af88893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darryldecode/laravelshoppingcart/zipball/8f227c052d041973c4d91bd77507098e9449d7ef",
-                "reference": "8f227c052d041973c4d91bd77507098e9449d7ef",
+                "url": "https://api.github.com/repos/darryldecode/laravelshoppingcart/zipball/2ad23e070af341da80300ef990b1fb529af88893",
+                "reference": "2ad23e070af341da80300ef990b1fb529af88893",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0",
-                "illuminate/translation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0",
-                "illuminate/validation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0",
-                "php": ">=7.1"
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0",
+                "illuminate/translation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0",
+                "illuminate/validation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0",
+                "php": ">=7.3"
             },
             "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0.0",
-                "symfony/var-dumper": "2.7.*@dev"
+                "mockery/mockery": "^1.4.2",
+                "phpunit/phpunit": "^9.0",
+                "symfony/var-dumper": "5.1.5.*@dev"
             },
             "type": "library",
             "extra": {
@@ -317,7 +317,11 @@
                 "laravel",
                 "shopping cart"
             ],
-            "time": "2020-03-04T06:52:40+00:00"
+            "support": {
+                "issues": "https://github.com/darryldecode/laravelshoppingcart/issues",
+                "source": "https://github.com/darryldecode/laravelshoppingcart/tree/4.2.1"
+            },
+            "time": "2020-12-18T03:01:17+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -7020,68 +7024,6 @@
             "time": "2020-06-22T07:06:58+00:00"
         },
         {
-            "name": "salmanzafar/laravel-crud-generator",
-            "version": "v1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/salmanzafar949/Laravel-Crud-Generator.git",
-                "reference": "a4b4848127c0ee8a8de5b2e51234c5a37abd045a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/salmanzafar949/Laravel-Crud-Generator/zipball/a4b4848127c0ee8a8de5b2e51234c5a37abd045a",
-                "reference": "a4b4848127c0ee8a8de5b2e51234c5a37abd045a",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0 || ^7.1 || ^7.2 || ^7.3 || ^7.4"
-            },
-            "require-dev": {
-                "laravel/framework": "^5.5 || ^6.0 || ^7.0 || ^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Salman\\CrudGenerator\\CrudGeneratorServiceProvider"
-                    ],
-                    "aliases": {
-                        "CrudGenerator": "Salman\\CrudGenerator\\Facades\\CrudGenerator"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Salman\\CrudGenerator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Salman Zafar",
-                    "email": "salmanzafar949@gmail.com"
-                }
-            ],
-            "description": "A simple Laravel library that allows you to create crud operations with a single command",
-            "keywords": [
-                "laravel",
-                "laravel-5",
-                "laravel-6",
-                "laravel-7",
-                "laravel-8",
-                "laravel-api-crud-generator",
-                "laravel-crud-generator",
-                "laravel5",
-                "laravel6",
-                "laravel7",
-                "laravel8"
-            ],
-            "time": "2020-10-12T13:42:52+00:00"
-        },
-        {
             "name": "scrivo/highlight.php",
             "version": "v9.18.1.1",
             "source": {
@@ -7920,5 +7862,6 @@
     "platform": {
         "php": "^7.4.9"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }

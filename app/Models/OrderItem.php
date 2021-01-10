@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $order_id
  * @property int $product_id
+ * @property int|null $qty
  * @property float $price
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -31,12 +32,14 @@ class OrderItem extends Model
 	protected $casts = [
 		'order_id' => 'int',
 		'product_id' => 'int',
+		'qty' => 'int',
 		'price' => 'float'
 	];
 
 	protected $fillable = [
 		'order_id',
 		'product_id',
+		'qty',
 		'price'
 	];
 
