@@ -71,7 +71,7 @@ Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
 
     });
 
-    Route::prefix("account")->name("account.")->group(function (){
+    Route::prefix("akun")->name("account.")->group(function (){
         Route::get("/","Account@index")->name("list");
         Route::get("/add","Account@add")->name("add");
         Route::get("/update/{id}","Account@update")->name("update");

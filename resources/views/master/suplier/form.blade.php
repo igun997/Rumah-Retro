@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
-                            <textarea name="alamat" cols="30" rows="10" class="form-control">{{@$data->name}}</textarea>
+                            <textarea name="alamat" cols="30" rows="10" class="form-control">{{@$data->alamat}}</textarea>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-block btn-lg">Simpan Data</button>
