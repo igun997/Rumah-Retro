@@ -1,4 +1,5 @@
-vendor
+vendor/
+!public/vendor
 .idea
 storage
 .env
