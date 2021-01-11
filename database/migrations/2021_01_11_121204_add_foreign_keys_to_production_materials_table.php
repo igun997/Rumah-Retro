@@ -14,7 +14,6 @@ class AddForeignKeysToProductionMaterialsTable extends Migration
     public function up()
     {
         Schema::table('production_materials', function (Blueprint $table) {
-            $table->foreign('material_id', 'production_materials_ibfk_1')->references('id')->on('materials')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('production_id', 'production_materials_ibfk_2')->references('id')->on('productions')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
@@ -27,7 +26,6 @@ class AddForeignKeysToProductionMaterialsTable extends Migration
     public function down()
     {
         Schema::table('production_materials', function (Blueprint $table) {
-            $table->dropForeign('production_materials_ibfk_1');
             $table->dropForeign('production_materials_ibfk_2');
         });
     }

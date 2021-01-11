@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductionMaterialsTable extends Migration
+class CreatePurchaseMaterialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateProductionMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('production_materials', function (Blueprint $table) {
+        Schema::create('purchase_materials', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('material_id')->index('material_id');
-            $table->float('qty', 10, 0);
-            $table->integer('production_id')->index('production_id');
+            $table->integer('purchase_id')->index('purchase_id');
+            $table->integer('material_id')->index('product_id');
+            $table->double('qty');
+            $table->double('price');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateProductionMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('production_materials');
+        Schema::dropIfExists('purchase_materials');
     }
 }
