@@ -1,4 +1,5 @@
 vendor/
 !public/vendor
+!public/assets/js/vendor
 .idea
 storage
