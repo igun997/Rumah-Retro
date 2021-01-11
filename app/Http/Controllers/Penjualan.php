@@ -146,11 +146,18 @@ class Penjualan extends Controller
             $create = Production::create(["name"=>$order->user->name,"notes"=>$order->notes,"status"=>ProductionStatus::CREATED,"due_date"=>Carbon::now()->addDays(14)]);
             if ($create){
                 $con = true;
+                $biaya_produksi = 0;
                 foreach ($order->order_items as $index => $order_item) {
                     $create_item = ProductionMaterial::create(["production_id"=>$create->id,"qty"=>$order_item->qty,"product_id"=>$order_item->product_id]);
                     if (!$create_item){
                         $con = false;
                     }
+                    $p = Product::find($order_item->product_id);
+                    $_p = 0;
+                    foreach ($p->materials as $index => $product_material) {
+                        $_p += ($product_material->pivot->qty * $product_material->price);
+                    }
+                    $biaya_produksi += ($_p * $order_item->qty);
                 }
                 if (!$con){
                     $create->delete();
@@ -158,6 +165,8 @@ class Penjualan extends Controller
                     $order->save();
                     return  $this->failBack(false);
                 }
+                $create->total = $biaya_produksi;
+                $create->save();
             }
         }
         return $this->successBack(false);

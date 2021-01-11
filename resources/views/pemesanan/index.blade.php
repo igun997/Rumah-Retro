@@ -54,7 +54,7 @@
                                                 <a href="{{route("pemesanan.cancel",$row->id)}}" class="btn btn-danger m-2">
                                                     <li class="fa fa-trash"></li>
                                                 </a>
-                                                <a href="{{route("pemesanan.confirm",$row->id)}}" class="btn btn-danger m-2">
+                                                <a href="{{route("pemesanan.confirm",$row->id)}}" class="btn btn-success m-2">
                                                     <li class="fa fa-check"></li>
                                                 </a>
                                             @endif

@@ -5,13 +5,46 @@ namespace App\Http\Controllers;
 use App\Casts\LevelAccount;
 use App\Casts\StatusAccount;
 use App\Models\User;
+use App\Traits\ViewTrait;
 use Illuminate\Http\Request;
 
 class Auth extends Controller
 {
+    use ViewTrait;
+    public function __construct()
+    {
+        $this->base = "";
+    }
 
     public function index(){
         return view("login");
+    }
+
+    public function register()
+    {
+        $title = "Form Registrasi";
+        return $this->loadView("register",compact("title"));
+    }
+
+    public function register_action(Request  $req)
+    {
+        $req->validate([
+            "name"=>"required",
+            "alamat"=>"required",
+            "email"=>"required",
+            "no_hp"=>"required",
+            "username"=>"required",
+            "password"=>"required",
+        ]);
+
+        $data = $req->all();
+        $data["status"] = StatusAccount::ACTIVE;
+        $data["level"] = LevelAccount::PELANGGAN;
+        $create = User::create($data);
+        if ($create){
+            return $this->successRedirect("login");
+        }
+        return  $this->failBack(false);
     }
 
     public function login(Request $req)

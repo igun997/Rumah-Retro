@@ -48,6 +48,8 @@
                     <span class="fas fa-sign-in-alt"></span>
                     {{ __('adminlte::adminlte.sign_in') }}
                 </button>
+
+                <a href="{{route("register")}}" class="btn btn-block mt-1 btn-flat btn-primary">Register</a>
             </div>
         </div>
 

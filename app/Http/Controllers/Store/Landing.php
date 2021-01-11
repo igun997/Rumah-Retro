@@ -2,9 +2,19 @@
 
 namespace App\Http\Controllers\Store;
 
+use App\Casts\LevelAccount;
+use App\Casts\OrderStatus;
+use App\Casts\ProductionStatus;
+use App\Casts\StatusAccount;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Production;
+use App\Models\ProductionMaterial;
+use App\Models\User;
 use App\Traits\ViewTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Cart;
 class Landing extends Controller
@@ -22,6 +32,54 @@ class Landing extends Controller
         return $this->loadView("landing",compact("title","products"));
     }
 
+    public function cart_finish(Request $req)
+    {
+        $cart = Cart::session(session()->get("id"));
+        $myCart = $cart->getContent();
+        if (empty($myCart)){
+            return $this->failBack();
+        }
+        $user_id = session()->get("id");
+        $instance = User::find($user_id);
+        $total = str_replace(",","",$cart->getTotal());
+        $total += ($req->additional_price ?? 0);
+        $notes = "";
+        $additional_price = 0;
+        if ($req->has("notes")){
+            $notes = $req->notes;
+        }
+        if ($req->has("additional_price")){
+            $additional_price = $req->additional_price;
+        }
+        $create_order = Order::create([
+            "user_id"=>$user_id,
+            "total"=>$total,
+            "notes"=>$notes,
+            "additional_price"=>$additional_price,
+            "status"=>OrderStatus::WAITING_PAYMENT,
+        ]);
+        if ($create_order) {
+            $order_id = $create_order->id;
+            $failed = false;
+            foreach ($myCart as $index => $item) {
+                $itemOrder = OrderItem::create([
+                    "order_id" => $order_id,
+                    "product_id" => $item->id,
+                    "qty" => $item->quantity,
+                    "price" => $item->price,
+                ]);
+                if (!$itemOrder) {
+                    $failed = true;
+                }
+            }
+            if (!$failed) {
+                $cart->clear();
+                return $this->successRedirect("orders.list");
+            }
+            return $this->failBack(false);
+        }
+        return $this->failBack(false);
+    }
     public function cart()
     {
         $title = "Keranjang Belanja";
@@ -52,7 +110,7 @@ class Landing extends Controller
             "qty"=>"numeric|min:1|required"
         ]);
         $cart = Cart::session(session()->get("id"))->update($id,[
-            'quantity' => $req->qty
+            'quantity' => $req->qty -  Cart::session(session()->get("id"))->get($id)->quantity
         ]);
         return $this->successBack(false);
     }

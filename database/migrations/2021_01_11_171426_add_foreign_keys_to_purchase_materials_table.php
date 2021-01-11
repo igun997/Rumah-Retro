@@ -16,6 +16,7 @@ class AddForeignKeysToPurchaseMaterialsTable extends Migration
         Schema::table('purchase_materials', function (Blueprint $table) {
             $table->foreign('purchase_id', 'purchase_materials_ibfk_2')->references('id')->on('purchases')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('material_id', 'purchase_materials_ibfk_3')->references('id')->on('materials')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('suplier_id', 'purchase_materials_ibfk_4')->references('id')->on('supliers')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -29,6 +30,7 @@ class AddForeignKeysToPurchaseMaterialsTable extends Migration
         Schema::table('purchase_materials', function (Blueprint $table) {
             $table->dropForeign('purchase_materials_ibfk_2');
             $table->dropForeign('purchase_materials_ibfk_3');
+            $table->dropForeign('purchase_materials_ibfk_4');
         });
     }
 }

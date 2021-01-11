@@ -16,6 +16,7 @@ class CreateProductionMaterialsTable extends Migration
         Schema::create('production_materials', function (Blueprint $table) {
             $table->integer('id', true);
             $table->double('qty');
+            $table->integer('product_id')->nullable()->index('product_id');
             $table->integer('production_id')->index('production_id');
         });
     }

@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $name
  * @property string|null $notes
  * @property Carbon|null $due_date
- * @property float $total
+ * @property float|null $total
  * @property int $status
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at

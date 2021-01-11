@@ -17,6 +17,7 @@ class CreatePurchaseMaterialsTable extends Migration
             $table->integer('id', true);
             $table->integer('purchase_id')->index('purchase_id');
             $table->integer('material_id')->index('product_id');
+            $table->integer('suplier_id')->nullable()->index('suplier_id');
             $table->double('qty');
             $table->double('price');
         });

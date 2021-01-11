@@ -17,12 +17,15 @@ Route::namespace("Store")->name("store.")->group(function (){
     Route::get("/cart","Landing@cart")->name("cart");
     Route::post("/cart/{id}","Landing@cart_action")->name("cart_action");
     Route::post("/cart_update/{id}","Landing@cart_update")->name("cart_update");
+    Route::get("/cart_finish","Landing@cart_finish")->name("cart_finish");
 });
 Route::get("/login","Auth@index")->name("login");
 Route::get("/template",function (){
     return view("template.jadwal");
 });
 Route::post("/login","Auth@login")->name("login.post");
+Route::post("/register","Auth@register_action")->name("register.post");
+Route::get("/register","Auth@register")->name("register");
 Route::get("/logout","Auth@logout")->name("logout");
 
 
@@ -94,6 +97,7 @@ Route::prefix("pemesanan")->name("pemesanan.")->group(function (){
     Route::get("/detail/{id}","Pemesanan@detail")->name("detail");
     Route::get("/cancel/{id}","Pemesanan@cancel")->name("cancel");
     Route::get("/proses/{id}","Pemesanan@proses")->name("proses");
+    Route::get("/confirm/{id}","Pemesanan@confirm")->name("confirm");
     Route::get("/sending/{id}","Pemesanan@sending")->name("sending");
     Route::get("/done/{id}","Pemesanan@done")->name("done");
 });
@@ -107,6 +111,17 @@ Route::prefix("penjualan")->name("penjualan.")->group(function (){
 
     Route::get("/detail/{id}","Penjualan@detail")->name("detail");
     Route::get("/update_status/{id}","Penjualan@update_status")->name("update_status");
+});
+
+Route::prefix("orders")->name("orders.")->group(function (){
+    Route::get("/","OrdersPelanggan@index")->name("list");
+    Route::post("/upload/{id}","OrdersPelanggan@upload")->name("upload");
+});
+
+Route::prefix("produksi")->name("produksi.")->group(function (){
+    Route::get("/","Produksi@index")->name("list");
+    Route::get("/detail/{id}","Produksi@detail")->name("detail");
+    Route::get("/update_status/{id}","Produksi@update_status")->name("update_status");
 });
 
 

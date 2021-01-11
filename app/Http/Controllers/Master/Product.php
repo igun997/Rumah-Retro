@@ -150,7 +150,7 @@ class Product extends Controller
     {
         $req->validate([
             "name"=>"required",
-            "img"=>"required|mimes:jpg,png,gif",
+            "img"=>"required|mimes:jpg,jpeg,png,gif",
         ]);
         $data = $req->all();
         if ($req->has("img")){
