@@ -136,26 +136,35 @@
                                     <td>{{\App\Casts\OrderStatus::lang($row->status)}}</td>
                                     <td>{{$row->updated_at->format("d/m/Y")}}</td>
                                     <td align="center">
-                                        <a href="" class="btn btn-primary m-2">
+                                        <a href="{{route("penjualan.detail",$row->id)}}" class="btn btn-primary m-2">
                                             <li class="fa fa-eye"></li>
                                         </a>
                                         @if(\App\Casts\OrderStatus::WAITING_PAYMENT == $row->status)
-                                            <a href="" class="btn btn-success m-2">
+                                            <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::CONFIRMED])}}" class="btn btn-success m-2">
                                                 <li class="fa fa-check"></li>
                                             </a>
-                                            <a href="" class="btn btn-danger m-2">
+                                            <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::CANCELED])}}" class="btn btn-danger m-2">
                                                 <li class="fa fa-trash"></li>
                                             </a>
                                         @elseif(\App\Casts\OrderStatus::CONFIRMED == $row->status)
-                                            <a href="" class="btn btn-success m-2">
+
+                                            <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::PROCESSING])}}" class="btn btn-success m-2">
                                                 <li class="fa fa-arrow-circle-right"></li> Proses Pesanan
                                             </a>
                                         @elseif(\App\Casts\OrderStatus::PROCESSING == $row->status)
-                                            <a href="" class="btn btn-success m-2">
-                                                <li class="fa fa-arrow-circle-right"></li> Kirim Pesanan
-                                            </a>
+                                            @if(\App\Models\Production::where("name",$row->user->name)->count() > 0)
+                                            @if(\App\Models\Production::where("name",$row->user->name)->first()->status === \App\Casts\ProductionStatus::COMPLETED)
+                                                    <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::SHIPPING])}}" class="btn btn-success m-2">
+                                                        <li class="fa fa-arrow-circle-right"></li> Kirim Pesanan
+                                                    </a>
+                                                @else
+                                                <p class="btn btn-warning">Produksi Sedang Berlangsung . . .</p>
+                                                @endif
+                                                @else
+                                                <p class="btn btn-danger">Tidak Ada Aktifitas Produksi Terkait</p>
+                                                @endif
                                         @elseif(\App\Casts\OrderStatus::SHIPPING == $row->status)
-                                            <a href="" class="btn btn-success m-2">
+                                            <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::COMPLETED])}}" class="btn btn-success m-2">
                                                 <li class="fa fa-arrow-circle-right"></li> Selesaikan
                                             </a>
                                         @endif

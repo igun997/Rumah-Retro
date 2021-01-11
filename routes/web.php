@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::namespace("Store")->name("store.")->group(function (){
     Route::get("/","Landing@index")->name("landing");
+    Route::get("/cart","Landing@cart")->name("cart");
+    Route::post("/cart/{id}","Landing@cart_action")->name("cart_action");
+    Route::post("/cart_update/{id}","Landing@cart_update")->name("cart_update");
 });
 Route::get("/login","Auth@index")->name("login");
 Route::get("/template",function (){
@@ -101,6 +104,9 @@ Route::prefix("penjualan")->name("penjualan.")->group(function (){
     Route::get("/cart","Penjualan@cart")->name("cart");
     Route::get("/cart/delete/{id}","Penjualan@cart_delete")->name("cart_delete");
     Route::post("/cart/finished","Penjualan@cart_finish")->name("cart_finish");
+
+    Route::get("/detail/{id}","Penjualan@detail")->name("detail");
+    Route::get("/update_status/{id}","Penjualan@update_status")->name("update_status");
 });
 
 

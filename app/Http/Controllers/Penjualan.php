@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Casts\LevelAccount;
 use App\Casts\OrderStatus;
+use App\Casts\ProductionStatus;
 use App\Casts\StatusAccount;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Production;
+use App\Models\ProductionMaterial;
 use App\Models\User;
 use App\Traits\ViewTrait;
+use Carbon\Carbon;
 use Cart;
 use Illuminate\Http\Request;
 
@@ -106,6 +110,20 @@ class Penjualan extends Controller
                 }
                 if (!$failed){
                     $cart->clear();
+                    $create = Production::create(["name"=>$crete_user->name,"notes"=>$create_order->notes,"status"=>ProductionStatus::CREATED,"due_date"=>Carbon::now()->addDays(14)]);
+                    if ($create){
+                        $con = true;
+                        foreach ($create_order->order_items as $index => $order_item) {
+                            $create_item = ProductionMaterial::create(["production_id"=>$create->id,"qty"=>$order_item->qty,"product_id"=>$order_item->product_id]);
+                            if (!$create_item){
+                                $con = false;
+                            }
+                        }
+                        if (!$con){
+                            $create->delete();
+                            return  $this->failBack(false);
+                        }
+                    }
                     return $this->successBack();
                 }
 
@@ -114,5 +132,41 @@ class Penjualan extends Controller
             }
         }
         return  $this->failBack();
+    }
+
+    public function update_status(Request $req,$id)
+    {
+        $req->validate([
+            "status"=>"required"
+        ]);
+        $order = Order::findOrFail($id);
+        $order->status = $req->status;
+        $order->save();
+        if($req->status == OrderStatus::PROCESSING){
+            $create = Production::create(["name"=>$order->user->name,"notes"=>$order->notes,"status"=>ProductionStatus::CREATED,"due_date"=>Carbon::now()->addDays(14)]);
+            if ($create){
+                $con = true;
+                foreach ($order->order_items as $index => $order_item) {
+                    $create_item = ProductionMaterial::create(["production_id"=>$create->id,"qty"=>$order_item->qty,"product_id"=>$order_item->product_id]);
+                    if (!$create_item){
+                        $con = false;
+                    }
+                }
+                if (!$con){
+                    $create->delete();
+                    $order->status = OrderStatus::CONFIRMED;
+                    $order->save();
+                    return  $this->failBack(false);
+                }
+            }
+        }
+        return $this->successBack(false);
+    }
+
+    public function detail($id)
+    {
+        $order = Order::findOrFail($id);
+        $title = "Detail Pesanan";
+        return $this->loadView("detail",compact("title","order"));
     }
 }

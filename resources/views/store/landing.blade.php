@@ -14,30 +14,33 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($products as $key => $product)
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-popular-items mb-50 text-center">
                         <div class="popular-img">
-                            <img src="assets/img/gallery/popular1.png" alt="">
+                            <img src="{{$product->img}}" alt="">
                             <div class="img-cap">
-                                <span>Add to cart</span>
-                            </div>
-                            <div class="favorit-items">
-                                <span class="flaticon-heart"></span>
+                                <span data-identifier="product_{{$product->id}}" class="cart_submit" data-identify="product_{{$product->id}}">Tambah Ke Keranjang</span>
+                                <form action="{{route("store.cart_action",$product->id)}}" id="product_{{$product->id}}" method="post">
+                                    <input type="text" name="product_id" value="{{$product->id}}" hidden>
+                                    <button style="display: none" type="submit" ></button>
+                                </form>
                             </div>
                         </div>
                         <div class="popular-caption">
-                            <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                            <span>$ 45,743</span>
+                            <h3><a href="">{{$product->name}}</a></h3>
+                            <span>Rp. {{number_format($product->price)}}</span>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
             <!-- Button -->
-            <div class="row justify-content-center">
-                <div class="room-btn pt-70">
-                    <a href="catagori.html" class="btn view-btn1">Lihat Produk Lainnya </a>
-                </div>
-            </div>
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="room-btn pt-70">--}}
+{{--                    <a href="catagori.html" class="btn view-btn1">Lihat Produk Lainnya </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 
@@ -71,4 +74,16 @@
         </div>
     </div>
     <!-- Shop Method End-->
+@endsection
+@section("js")
+    <script>
+        $(document).ready(function () {
+            $(".cart_submit").on("click",function () {
+                console.log("Click")
+                id = $(this).data("identifier");
+                console.log(id)
+                $("#"+id).trigger("submit");
+            })
+        })
+    </script>
 @endsection

@@ -16,14 +16,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string|null $name
  * @property string|null $notes
- * @property int $qty
  * @property Carbon|null $due_date
  * @property float $total
  * @property int $status
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Collection|Material[] $materials
+ * @property Collection|ProductionMaterial[] $production_materials
  *
  * @package App\Models
  */
@@ -32,7 +31,6 @@ class Production extends Model
 	protected $table = 'productions';
 
 	protected $casts = [
-		'qty' => 'int',
 		'total' => 'float',
 		'status' => 'int'
 	];
@@ -44,15 +42,13 @@ class Production extends Model
 	protected $fillable = [
 		'name',
 		'notes',
-		'qty',
 		'due_date',
 		'total',
 		'status'
 	];
 
-	public function materials()
+	public function production_materials()
 	{
-		return $this->belongsToMany(Material::class, 'production_materials')
-					->withPivot('id', 'qty');
+		return $this->hasMany(ProductionMaterial::class);
 	}
 }

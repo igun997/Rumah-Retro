@@ -7,7 +7,6 @@
     <title>@yield("title")</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="{{url("assets/img/favicon.ico")}}">
 
     <!-- CSS here -->
@@ -22,6 +21,7 @@
     <link rel="stylesheet" href="{{url("assets/css/slick.css")}}">
     <link rel="stylesheet" href="{{url("assets/css/nice-select.css")}}">
     <link rel="stylesheet" href="{{url("assets/css/style.css")}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -31,7 +31,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="assets/img/logo/logo.png" alt="">
+                <img src="{{url("logo.png")}}" alt="">
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 <div class="menu-wrapper">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                        <img src="{{url("logo.png")}}" class="img-fluid" style="height: 60px" alt="">
                     </div>
                     <!-- Main-menu -->
                     <div class="main-menu d-none d-lg-block">
@@ -62,7 +62,7 @@
                     <div class="header-right">
                         <ul>
                             <li> <a href="{{route("login")}}"><span class="flaticon-user"></span></a></li>
-                            <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a> </li>
+                            <li><a href="{{route("store.cart")}}"><span class="flaticon-shopping-cart"></span></a> </li>
                         </ul>
                     </div>
                 </div>
@@ -107,6 +107,8 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{url("assets/js/plugins.js")}}"></script>
 <script src="{{url("assets/js/main.js")}}"></script>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+@yield("js")
+@include("msg")
 </body>
 </html>
