@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::namespace("Store")->name("store.")->group(function (){
     Route::get("/","Landing@index")->name("landing");
+    Route::get("/about","Landing@about")->name("about");
+    Route::get("/contact","Landing@contact")->name("contact");
+    Route::get("/product","Landing@product")->name("product");
+    Route::get("/detail_product/{id}","Landing@detail_product")->name("detail_product");
+
     Route::get("/cart","Landing@cart")->name("cart");
     Route::post("/cart/{id}","Landing@cart_action")->name("cart_action");
     Route::post("/cart_update/{id}","Landing@cart_update")->name("cart_update");
@@ -115,6 +120,12 @@ Route::prefix("penjualan")->name("penjualan.")->group(function (){
 
 Route::prefix("orders")->name("orders.")->group(function (){
     Route::get("/","OrdersPelanggan@index")->name("list");
+    Route::get("/waiting","OrdersPelanggan@index_waiting")->name("list_waiting");
+    Route::get("/confirmed","OrdersPelanggan@index_confirmed")->name("list_confirmed");
+    Route::get("/process","OrdersPelanggan@index_process")->name("list_process");
+    Route::get("/shiping","OrdersPelanggan@index_shiping")->name("list_shiping");
+    Route::get("/complete","OrdersPelanggan@index_complete")->name("list_complete");
+    Route::get("/cancel","OrdersPelanggan@index_cancel")->name("list_cancel");
     Route::post("/upload/{id}","OrdersPelanggan@upload")->name("upload");
 });
 

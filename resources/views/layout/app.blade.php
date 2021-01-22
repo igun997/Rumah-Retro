@@ -52,9 +52,9 @@
                         <nav>
                             <ul id="navigation">
                                 <li><a href="/">Beranda</a></li>
-                                <li><a href="/">Produk Kami</a></li>
-                                <li><a href="/">Tentang Rumah Retro</a></li>
-                                <li><a href="/">Hubungi Kami</a></li>
+                                <li><a href="/product">Produk Kami</a></li>
+                                <li><a href="/about">Tentang Rumah Retro</a></li>
+                                <li><a href="/contact">Hubungi Kami</a></li>
                             </ul>
                         </nav>
                     </div>

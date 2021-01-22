@@ -32,6 +32,32 @@ class Landing extends Controller
         return $this->loadView("landing",compact("title","products"));
     }
 
+    public function about()
+    {
+        $title = "Rumah Retro - About Us";
+        $products = Product::all();
+        return $this->loadView("about",compact("title","products"));
+    }
+
+    public function contact()
+    {
+        $title = "Rumah Retro - Contact Us";
+        $products = Product::all();
+        return $this->loadView("contact",compact("title","products"));
+    }
+    public function product()
+    {
+        $title = "Rumah Retro - Produk Kami";
+        $products = Product::all();
+        return $this->loadView("product",compact("title","products"));
+    }
+    public function detail_product($id)
+    {
+        $title = "Rumah Retro - Produk Kami";
+        $data = Product::where('id',$id)->first();
+        // return $data;
+        return $this->loadView("detail_product",compact("title","data"));
+    }
     public function cart_finish(Request $req)
     {
         $cart = Cart::session(session()->get("id"));
@@ -114,6 +140,7 @@ class Landing extends Controller
         ]);
         return $this->successBack(false);
     }
+
     public function cart_delete($id)
     {
         $cart = Cart::session(session()->get("id"))->remove($id);

@@ -153,7 +153,33 @@ class Gateway
                         $e->menu->add([
                             "text" => "Pesanan",
                             "url" => "orders",
-                            "icon" => "fa fa-file"
+                            "icon" => "fa fa-file",
+                            'submenu' => [
+                                [
+                                    'text' => 'Menunggu Pembayaran',
+                                    'url'  => 'orders/waiting',
+                                ],
+                                [
+                                    'text' => 'Pembayaran Di Konfirmasi',
+                                    'url'  => 'orders/confirmed',
+                                ],
+                                [
+                                    'text' => 'Di Proses',
+                                    'url'  => 'orders/process',
+                                ],
+                                [
+                                    'text' => 'Pengiriman',
+                                    'url'  => 'orders/shiping',
+                                ],
+                                [
+                                    'text' => 'Complete',
+                                    'url'  => 'orders/complete',
+                                ],
+                                [
+                                    'text' => 'Di Batalkan',
+                                    'url'  => 'orders/cancel',
+                                ],
+                            ],
                         ]);
                     });
 
