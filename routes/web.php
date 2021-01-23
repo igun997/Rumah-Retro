@@ -23,6 +23,11 @@ Route::namespace("Store")->name("store.")->group(function (){
     Route::post("/cart/{id}","Landing@cart_action")->name("cart_action");
     Route::post("/cart_update/{id}","Landing@cart_update")->name("cart_update");
     Route::get("/cart_finish","Landing@cart_finish")->name("cart_finish");
+
+    Route::get("/provinsi/{id?}","\App\Http\Controllers\Utility@getProvinsi")->name("provinsi");
+    Route::get("/kota/{id?}","\App\Http\Controllers\Utility@getKota")->name("kota");
+    Route::get("/kecamatan/{id?}","\App\Http\Controllers\Utility@getKecamatan")->name("kecamatan");
+    Route::get("/cek_ongkir","\App\Http\Controllers\Utility@cek_ongkir")->name("cek_ongkir");
 });
 Route::get("/login","Auth@index")->name("login");
 Route::get("/template",function (){
