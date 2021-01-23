@@ -123,7 +123,7 @@
                                 <b>Catatan</b>
                             </td>
                             <td id="catatan">
-                                <textarea name="notes" id="" cols="30" rows="10" class="form-control"></textarea>
+                                <textarea id="notes" id="" cols="30" rows="10" class="form-control"></textarea>
                             </td>
                             <td></td>
                         </tr>
@@ -153,6 +153,7 @@
 @section("js")
     <script>
         $(document).ready(()=>{
+
             $("select").niceSelect("destroy");
             $("#submit_data").hide();
             $("#lanjutkan").on("click",function (){
@@ -217,7 +218,7 @@
                 $("select").niceSelect("update");
             }
             loadProvince();
-
+            let total_all = 0;
             async function ongkir(dest,berat,exp){
                 const  req = await fetch("{{route("store.cek_ongkir")}}?dest="+dest+"&berat="+berat+"&expedisi="+exp);
                 const _data =  await req.json();
@@ -227,6 +228,7 @@
                         console.log(harga)
                         $("#ongkir").html("Rp. "+parseFloat(harga));
                         $("#total").html("Rp. "+(parseFloat(harga)+parseFloat(subtotal)));
+                        total_all = (parseFloat(harga)+parseFloat(subtotal));
                     }else{
                         toastr.error("Gagal Kalkulasi");
                     }
@@ -245,6 +247,9 @@
                 console.log(district_id)
                 ongkir(district_id,berat_barang,$("#exp").val())
             })
+            $("#submit_data").on("click",function (){
+                location.href="{{route("store.cart_finish")}}?total="+total_all+"&notes="+$("#notes").val()
+            });
 
         })
     </script>

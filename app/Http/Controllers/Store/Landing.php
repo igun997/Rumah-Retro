@@ -80,7 +80,7 @@ class Landing extends Controller
         }
         $create_order = Order::create([
             "user_id"=>$user_id,
-            "total"=>$total,
+            "total"=>$req->total,
             "notes"=>$notes,
             "type"=>TypeStatus::ONLINE,
             "additional_price"=>$additional_price,
@@ -102,7 +102,7 @@ class Landing extends Controller
             }
             if (!$failed) {
                 $cart->clear();
-                return $this->successRedirect("orders.checkout");
+                return $this->successRedirect("orders.list");
             }
             return $this->failBack(false);
         }
