@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property Size $size
  * @property Collection|Product[] $products
- * @property Collection|Production[] $productions
  * @property Collection|Purchase[] $purchases
  *
  * @package App\Models
@@ -60,24 +59,9 @@ class Material extends Model
 					->withPivot('id', 'qty');
 	}
 
-	public function productions()
-	{
-		return $this->belongsToMany(Production::class, 'production_materials')
-					->withPivot('id', 'qty');
-	}
-
-    public function sisa()
-    {
-        $used = 0;
-        $_a = ProductMaterial::where(["material_id"=>$this->id])->get();
-        foreach ($_a as $index => $item) {
-            $used += $item->qty;
-        }
-        return $this->stok - $used;
-    }
 	public function purchases()
 	{
 		return $this->belongsToMany(Purchase::class, 'purchase_materials')
-					->withPivot('id', 'qty', 'price');
+					->withPivot('id', 'suplier_id', 'qty', 'price');
 	}
 }

@@ -14,11 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $purchase_id
  * @property int $material_id
+ * @property int|null $suplier_id
  * @property float $qty
  * @property float $price
  * 
  * @property Purchase $purchase
  * @property Material $material
+ * @property Suplier $suplier
  *
  * @package App\Models
  */
@@ -30,6 +32,7 @@ class PurchaseMaterial extends Model
 	protected $casts = [
 		'purchase_id' => 'int',
 		'material_id' => 'int',
+		'suplier_id' => 'int',
 		'qty' => 'float',
 		'price' => 'float'
 	];
@@ -37,6 +40,7 @@ class PurchaseMaterial extends Model
 	protected $fillable = [
 		'purchase_id',
 		'material_id',
+		'suplier_id',
 		'qty',
 		'price'
 	];
@@ -49,5 +53,10 @@ class PurchaseMaterial extends Model
 	public function material()
 	{
 		return $this->belongsTo(Material::class);
+	}
+
+	public function suplier()
+	{
+		return $this->belongsTo(Suplier::class);
 	}
 }

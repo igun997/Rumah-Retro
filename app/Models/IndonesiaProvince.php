@@ -11,31 +11,30 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Suplier
+ * Class IndonesiaProvince
  * 
- * @property int $id
+ * @property string $id
  * @property string $name
- * @property string $alamat
- * @property string $no_hp
+ * @property string|null $meta
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Collection|PurchaseMaterial[] $purchase_materials
+ * @property Collection|IndonesiaCity[] $indonesia_cities
  *
  * @package App\Models
  */
-class Suplier extends Model
+class IndonesiaProvince extends Model
 {
-	protected $table = 'supliers';
+	protected $table = 'indonesia_provinces';
+	public $incrementing = false;
 
 	protected $fillable = [
 		'name',
-		'alamat',
-		'no_hp'
+		'meta'
 	];
 
-	public function purchase_materials()
+	public function indonesia_cities()
 	{
-		return $this->hasMany(PurchaseMaterial::class);
+		return $this->hasMany(IndonesiaCity::class, 'province_id');
 	}
 }

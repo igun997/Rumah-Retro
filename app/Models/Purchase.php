@@ -48,6 +48,6 @@ class Purchase extends Model
 	public function materials()
 	{
 		return $this->belongsToMany(Material::class, 'purchase_materials')
-					->withPivot('id', 'qty', 'price');
+					->withPivot('id', 'suplier_id', 'qty', 'price');
 	}
 }

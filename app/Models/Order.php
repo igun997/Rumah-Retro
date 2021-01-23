@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $notes
  * @property float|null $additional_price
  * @property int $status
- * @property string $bukti
+ * @property string|null $bukti
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
