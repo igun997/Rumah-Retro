@@ -51,7 +51,29 @@
                         @endif
                         <tr class="bottom_button">
                             <td>
+                                Pengiriman
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="bottom_button">
+                            <td>
+                                Provinsi
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="bottom_button">
+                            <td>
+                                Kota
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
 
+                        <tr class="bottom_button">
+                            <td>
+                                <b>Total Pengiriman</b>
                             </td>
                             <td></td>
                             <td></td>
@@ -71,7 +93,7 @@
                     </table>
                     <div class="checkout_btn_inner float-right">
                         <a class="btn_1" href="/">Lanjutkan Belanja</a>
-                        <a class="btn_1 checkout_btn_1" href="{{route("store.cart_finish")}}">Proses Pembayaran</a>
+                        <a class="btn_1 checkout_btn_1 disabled" disabled id="lanjutkan" >Proses Pembayaran</a>
                     </div>
                 </div>
             </div>
