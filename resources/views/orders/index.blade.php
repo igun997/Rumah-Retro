@@ -48,7 +48,15 @@
                                                 <label class="btn-warning btn">
                                                     <form method="post" enctype="multipart/form-data" id="submit_form_{{$row->id}}" action="{{route("orders.upload",$row->id)}}">
                                                         <input type="file" name="file" onchange="submit({{$row->id}})" class="form-control-file">
-                                                        <li class="fa fa-upload"></li> Upload Bukti Bayar
+                                                        <li class="fa fa-upload"></li> Upload Bukti
+                                                    </form>
+                                                </label>
+                                            @endif
+                                            @if($row->status === \App\Casts\OrderStatus::CONFIRMED)
+                                                <label class="btn-warning btn">
+                                                    <form method="post" enctype="multipart/form-data" id="submit_form_{{$row->id}}" action="{{route("orders.upload",$row->id)}}">
+                                                        <input type="file" name="file" onchange="desain({{$row->id}})" class="form-control-file">
+                                                        <li class="fa fa-upload"></li> Upload Desain
                                                     </form>
                                                 </label>
                                             @endif
