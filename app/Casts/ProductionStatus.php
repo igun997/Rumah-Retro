@@ -11,6 +11,7 @@ class ProductionStatus
     const PROCESSING = 3;
     const CANCELED = 4;
     const COMPLETED = 5;
+    const CONFIRMED_BY_GUDANG = 6;
 
     public static function lang($level)
     {
@@ -24,6 +25,8 @@ class ProductionStatus
             return "Produksi Di Batalkan";
         }elseif ($level == self::COMPLETED){
             return "Produksi Telah Selesai";
+        }elseif ($level == self::CONFIRMED_BY_GUDANG){
+            return "Di Konfirmasi Gudang";
         }else{
             return  FALSE;
         }

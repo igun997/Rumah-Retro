@@ -40,6 +40,14 @@
                                             <a href="{{route("produksi.detail",$v->id)}}" class="btn btn-primary m-2">
                                                 <li class="fa fa-eye"></li>
                                             </a>
+                                            @if(\App\Casts\ProductionStatus::CONFIRMED === $v->status)
+                                                @if(session()->get("level") == \App\Casts\LevelAccount::GUDANG)
+                                                    <a href="{{route("produksi.update_status",[$v->id,"status"=>\App\Casts\ProductionStatus::CONFIRMED_BY_GUDANG])}}" class="btn btn-success m-2">
+                                                        <li class="fa fa-arrow-circle-right"></li> Konfirmasi Pesanan
+                                                    </a>
+                                                @endif
+                                            @endif
+                                            @if(session()->get("level") == \App\Casts\LevelAccount::PRODUKSI)
                                             @if(\App\Casts\ProductionStatus::CREATED === $v->status)
                                                 <a href="{{route("produksi.update_status",[$v->id,"status"=>\App\Casts\ProductionStatus::CONFIRMED])}}" class="btn btn-success m-2">
                                                     <li class="fa fa-check"></li>
@@ -48,6 +56,12 @@
                                                     <li class="fa fa-trash"></li>
                                                 </a>
                                             @elseif(\App\Casts\ProductionStatus::CONFIRMED === $v->status)
+                                               @if(session()->get("level") == \App\Casts\LevelAccount::GUDANG)
+                                                    <a href="{{route("produksi.update_status",[$v->id,"status"=>\App\Casts\ProductionStatus::CONFIRMED_BY_GUDANG])}}" class="btn btn-success m-2">
+                                                        <li class="fa fa-arrow-circle-right"></li> Konfirmasi Pesanan
+                                                    </a>
+                                               @endif
+                                            @elseif(\App\Casts\ProductionStatus::CONFIRMED_BY_GUDANG === $v->status)
                                                 <a href="{{route("produksi.update_status",[$v->id,"status"=>\App\Casts\ProductionStatus::PROCESSING])}}" class="btn btn-success m-2">
                                                     <li class="fa fa-arrow-circle-right"></li> Proses Pesanan
                                                 </a>
@@ -55,6 +69,7 @@
                                                 <a href="{{route("produksi.update_status",[$v->id,"status"=>\App\Casts\ProductionStatus::COMPLETED])}}" class="btn btn-success m-2">
                                                     <li class="fa fa-arrow-circle-right"></li> Selesaikan Pesanan
                                                 </a>
+                                            @endif
                                             @endif
 
                                         </td>

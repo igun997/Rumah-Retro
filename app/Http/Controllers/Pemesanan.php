@@ -21,7 +21,7 @@ class Pemesanan extends Controller
     public function index()
     {
         $title = "Pemesanan Bahan Baku";
-        $data = Purchase::all();
+        $data = Purchase::orderBy("id","desc")->get();
         return $this->loadView("index",compact("title","data"));
     }
 

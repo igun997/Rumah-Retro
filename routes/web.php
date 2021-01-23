@@ -95,6 +95,12 @@ Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
         Route::post("/update/{id}","Account@update_action")->name("update_action");
         Route::post("/add","Account@add_action")->name("add_action");
     });
+
+    Route::prefix("rekening")->name("rekening.")->group(function (){
+        Route::get("/","Rekening@index")->name("list");
+        Route::post("/update/{id}","Rekening@update_action")->name("update");
+        Route::post("/add","Rekening@add")->name("add");
+    });
 });
 
 Route::prefix("pemesanan")->name("pemesanan.")->group(function (){

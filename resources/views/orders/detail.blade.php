@@ -47,6 +47,17 @@
                             <b>Alamat </b> : {{$order->user->alamat}}
                         </li>
                     </ul>
+                    <ul class="list-group m-1">
+                        <li class="list-group-item active">
+                            Bayar Melalui
+                        </li>
+                        <li class="list-group-item">
+                            <b>Atas Nama  </b> : {{@\App\Models\Rekening::first()->name}}
+                        </li>
+                        <li class="list-group-item">
+                            <b>Nomor Rekening  </b> : {{@\App\Models\Rekening::first()->nomor}}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

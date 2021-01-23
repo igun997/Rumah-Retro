@@ -64,6 +64,11 @@ class Gateway
                             "icon"=>"fa fa-file"
                         ]);
                         $e->menu->add([
+                            "text"=>"Data Rekening",
+                            "url"=>"master/rekening",
+                            "icon"=>"fa fa-file"
+                        ]);
+                        $e->menu->add([
                             "text"=>"Data Akun",
                             "url"=>"master/akun",
                             "icon"=>"fa fa-file"
@@ -114,6 +119,12 @@ class Gateway
                             "text"=>"Data Produk",
                             "url"=>"master/produk",
                             "icon"=>"fa fa-file"
+                        ]);
+
+                        $e->menu->add([
+                            "text" => "Produksi",
+                            "url" => "produksi",
+                            "icon" => "fa fa-file"
                         ]);
 
                         $e->menu->add([

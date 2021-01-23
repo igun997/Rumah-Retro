@@ -15,7 +15,7 @@ class Produksi extends Controller
     public function __construct()
     {
         $this->base = "produksi";
-        $this->middleware("gateway:".LevelAccount::PRODUKSI);
+        $this->middleware("gateway:".LevelAccount::PRODUKSI."|".LevelAccount::GUDANG);
     }
 
     public function index()
