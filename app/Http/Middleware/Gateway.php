@@ -149,6 +149,13 @@ class Gateway
                     });
 
                 }elseif ($level == LevelAccount::PELANGGAN){
+                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
+                        $e->menu->add([
+                            "text"=>"Kembali Ke Toko",
+                            "url"=>"/",
+                            "icon"=>"fa fa-shopping-cart"
+                        ]);
+                    });
                     Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
                         $e->menu->add([
                             "text" => "Pesanan",
