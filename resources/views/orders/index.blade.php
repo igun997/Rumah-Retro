@@ -41,7 +41,7 @@
                                             {{\App\Casts\OrderStatus::lang($row->status)}}
                                         </td>
                                         <td align="center">
-                                            <a href="" class="btn btn-primary m-2">
+                                            <a href="{{route("orders.detail",$row->id)}}" class="btn btn-primary m-2">
                                                 <li class="fa fa-eye"></li>
                                             </a>
                                             @if($row->status === \App\Casts\OrderStatus::WAITING_PAYMENT)

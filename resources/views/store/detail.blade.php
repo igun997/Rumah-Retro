@@ -163,8 +163,10 @@
                 $("#lanjutkan").hide();
                 $("#submit_data").show();
             })
-            const berat_barang = {{($total/4)*1000}};
-            const subtotal = {{str_replace(",","",(Cart::session(session()->get("id"))->getTotal()))}};
+            const berat_barang = {{@($total/4)*1000}};
+            @if(session()->get("id"))
+            const subtotal = {{@str_replace(",","",(Cart::session(session()->get("id"))->getTotal()))}};
+            @endif
             async function loadProvince(){
                 const req = await fetch("{{route("store.provinsi")}}");
                 const _data =  await req.json();
@@ -248,7 +250,7 @@
                 ongkir(district_id,berat_barang,$("#exp").val())
             })
             $("#submit_data").on("click",function (){
-                location.href="{{route("store.cart_finish")}}?total="+total_all+"&notes="+$("#notes").val()
+                location.href="{{route("store.cart_finish")}}?total="+total_all+"&notes="+$("#notes").val()+"<br>Ekspedisi : "+$("#exp").val()
             });
 
         })

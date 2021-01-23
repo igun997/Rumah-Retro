@@ -21,49 +21,49 @@ class OrdersPelanggan extends Controller
     public function index()
     {
         $title = "History Pemesanan";
-        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("created_at","desc")->get();
+        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("id","desc")->get();
         return $this->loadView("index",compact("title","history"));
     }
 
     public function index_waiting()
     {
         $title = "History Pemesanan";
-        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("created_at","desc")->where("status",OrderStatus::WAITING_PAYMENT)->get();
+        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("id","desc")->where("status",OrderStatus::WAITING_PAYMENT)->get();
         return $this->loadView("index",compact("title","history"));
     }
 
     public function index_confirmed()
     {
         $title = "History Pemesanan";
-        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("created_at","desc")->where("status",OrderStatus::CONFIRMED)->get();
+        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("id","desc")->where("status",OrderStatus::CONFIRMED)->get();
         return $this->loadView("index",compact("title","history"));
     }
 
     public function index_process()
     {
         $title = "History Pemesanan";
-        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("created_at","desc")->where("status",OrderStatus::PROCESSING)->get();
+        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("id","desc")->where("status",OrderStatus::PROCESSING)->get();
         return $this->loadView("index",compact("title","history"));
     }
 
     public function index_shiping()
     {
         $title = "History Pemesanan";
-        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("created_at","desc")->where("status",OrderStatus::SHIPPING)->get();
+        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("id","desc")->where("status",OrderStatus::SHIPPING)->get();
         return $this->loadView("index",compact("title","history"));
     }
 
     public function index_complete()
     {
         $title = "History Pemesanan";
-        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("created_at","desc")->where("status",OrderStatus::COMPLETED)->get();
+        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("id","desc")->where("status",OrderStatus::COMPLETED)->get();
         return $this->loadView("index",compact("title","history"));
     }
 
     public function index_cancel()
     {
         $title = "History Pemesanan";
-        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("created_at","desc")->where("status",OrderStatus::CANCELED)->get();
+        $history = Order::where(["user_id"=>session()->get("id")])->orderBy("id","desc")->where("status",OrderStatus::CANCELED)->get();
         return $this->loadView("index",compact("title","history"));
     }
 
@@ -82,5 +82,12 @@ class OrdersPelanggan extends Controller
             return $this->successBack(false);
         }
         return $this->failBack(false);
+    }
+
+    public function detail($id)
+    {
+        $title = "Detail Pelanggan";
+        $order = Order::findOrFail($id);
+        return $this->loadView("detail",compact("title","order"));
     }
 }

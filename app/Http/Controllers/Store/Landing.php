@@ -111,7 +111,11 @@ class Landing extends Controller
     public function cart()
     {
         $title = "Keranjang Belanja";
-        $cart = Cart::session(session()->get("id"))->getContent();
+        $cart = [];
+        if (session()->get("id") !== null){
+            $cart = Cart::session(session()->get("id"))->getContent();
+
+        }
         return $this->loadView("detail",compact("title","cart"));
     }
 
