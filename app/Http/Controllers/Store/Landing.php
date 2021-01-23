@@ -100,7 +100,7 @@ class Landing extends Controller
             }
             if (!$failed) {
                 $cart->clear();
-                return $this->successRedirect("orders.list");
+                return $this->successRedirect("orders.checkout");
             }
             return $this->failBack(false);
         }
@@ -146,4 +146,12 @@ class Landing extends Controller
         $cart = Cart::session(session()->get("id"))->remove($id);
         return $this->successBack(false);
     }
+
+    public function checkout(Request $req,$id)
+    {
+        $req->validate([
+            "name"=>""
+        ]);
+    }
+
 }
