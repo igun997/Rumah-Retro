@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $notes
  * @property float|null $additional_price
  * @property int $status
+ * @property string $desain
+ * @property int|null $type
  * @property string|null $bukti
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -36,7 +38,8 @@ class Order extends Model
 		'user_id' => 'int',
 		'total' => 'float',
 		'additional_price' => 'float',
-		'status' => 'int'
+		'status' => 'int',
+		'type' => 'int'
 	];
 
 	protected $fillable = [
@@ -45,6 +48,8 @@ class Order extends Model
 		'notes',
 		'additional_price',
 		'status',
+		'desain',
+		'type',
 		'bukti'
 	];
 

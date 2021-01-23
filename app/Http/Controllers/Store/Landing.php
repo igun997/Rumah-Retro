@@ -6,6 +6,7 @@ use App\Casts\LevelAccount;
 use App\Casts\OrderStatus;
 use App\Casts\ProductionStatus;
 use App\Casts\StatusAccount;
+use App\Casts\TypeStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -81,6 +82,7 @@ class Landing extends Controller
             "user_id"=>$user_id,
             "total"=>$total,
             "notes"=>$notes,
+            "type"=>TypeStatus::ONLINE,
             "additional_price"=>$additional_price,
             "status"=>OrderStatus::WAITING_PAYMENT,
         ]);

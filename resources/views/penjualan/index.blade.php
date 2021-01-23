@@ -8,6 +8,7 @@
 
 @section('content')
     <div class="row">
+        @if(request()->get("type") === "pos")
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
@@ -101,6 +102,7 @@
                 </div>
             </div>
         </div>
+        @else
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
@@ -116,6 +118,7 @@
                                 <th>Nama Lengkap</th>
                                 <th>Total</th>
                                 <th>Catatan</th>
+                                <th>Jenis Transaksi</th>
                                 <th>Bukti</th>
                                 <th>Status</th>
                                 <th>Diubah</th>
@@ -130,6 +133,7 @@
                                     <td>{{$row->user->name}}</td>
                                     <td>Rp. {{number_format($row->total)}}</td>
                                     <td>{{$row->notes}}</td>
+                                    <td>{{\App\Casts\TypeStatus::lang($row->type)}}</td>
                                     <td>
                                         <img src="{{$row->bukti}}" onerror="this.src='//via.placeholder.com/400x200?text=Tidak%20Ada%20Bukti%20Pembayaran'" class="img-thumbnail img-fluid" alt="">
                                     </td>
@@ -177,6 +181,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 @stop
 

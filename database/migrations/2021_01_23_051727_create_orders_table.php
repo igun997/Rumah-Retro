@@ -20,6 +20,8 @@ class CreateOrdersTable extends Migration
             $table->text('notes')->nullable();
             $table->double('additional_price')->nullable();
             $table->integer('status');
+            $table->string('desain', 100);
+            $table->integer('type')->nullable();
             $table->string('bukti', 100)->nullable();
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();

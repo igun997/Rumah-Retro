@@ -193,9 +193,23 @@ class Gateway
                 }elseif ($level == LevelAccount::KASIR){
                     Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
                         $e->menu->add([
-                            "text" => "Penjualan",
+                            "text" => "Pesanan",
                             "url" => "penjualan",
-                            "icon" => "fa fa-file"
+                            "icon" => "fa fa-file",
+                            'submenu' => [
+                                [
+                                    'text' => 'POS',
+                                    'url'  => 'penjualan?type=pos',
+                                ],
+                                [
+                                    'text' => 'Transaksi Online',
+                                    'url'  => 'penjualan?type=online',
+                                ],
+                                [
+                                    'text' => 'Transaksi Offline',
+                                    'url'  => 'penjualan?type=offline',
+                                ]
+                            ]
                         ]);
                     });
 

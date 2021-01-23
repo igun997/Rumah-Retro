@@ -26,11 +26,16 @@ class Penjualan extends Controller
         $this->middleware("gateway:5");
     }
 
-    public function index()
+    public function index(Request $req)
     {
         $title = "Penjualan Produk";
         $produk = Product::all();
-        $history = Order::all();
+
+        if ($req->get("type") === "online") {
+            $history = Order::orderBy("created_at","desc")->where(["type"=>1])->get();
+        }else{
+            $history = Order::orderBy("created_at","desc")->where(["type"=>0])->get();
+        }
         $current_cart = Cart::session(session()->get("id"))->getContent();
 //        dd($current_cart->toArray());
 
