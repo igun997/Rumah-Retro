@@ -149,8 +149,7 @@ class Product extends Controller
     public function add_action(Request  $req)
     {
         $req->validate([
-            "name"=>"required",
-            "img"=>"required|mimes:jpg,jpeg,png,gif",
+            "name"=>"required"
         ]);
         $data = $req->all();
         if ($req->has("img")){
@@ -168,8 +167,7 @@ class Product extends Controller
     public function update_action(Request $req,$id)
     {
         $req->validate([
-            "name"=>"required",
-            "img"=>"mimes:jpg,png,gif",
+            "name"=>"required"
         ]);
         $data = $req->all();
         if ($req->has("img")){
