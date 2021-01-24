@@ -67,8 +67,7 @@ class Product extends Controller
     public function add_material_action(Request $req,$id)
     {
         $req->validate([
-            "material_id"=>"required",
-            "qty"=>"required|numeric|min:1"
+            "material_id"=>"required"
         ]);
         $material = \App\Models\Material::where(["id"=>$req->material_id]);
         if ($material->count() === 0){
