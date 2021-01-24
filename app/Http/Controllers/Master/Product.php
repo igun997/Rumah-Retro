@@ -101,8 +101,7 @@ class Product extends Controller
     public function update_material_action(Request $req,$id,$myId)
     {
         $req->validate([
-            "material_id"=>"required",
-            "qty"=>"required|numeric|min:1"
+            "material_id"=>"required"
         ]);
         $obj = ProductMaterial::where(["id"=>$myId])->first();
         $material = \App\Models\Material::where(["id"=>$req->material_id]);
