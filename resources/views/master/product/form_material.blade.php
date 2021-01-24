@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label>Jumlah Material</label>
-                            <input type="number" step="0.1" min="0" name="qty" value="{{@$updated->qty}}" class="form-control">
+                            <input type="number" step="0.01" min="0" name="qty" value="{{@$updated->qty}}" class="form-control">
                         </div>
 
                         <div class="form-group">
