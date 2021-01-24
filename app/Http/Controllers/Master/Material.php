@@ -45,8 +45,7 @@ class Material extends Controller
     public function add_action(Request  $req)
     {
         $req->validate([
-            "name"=>"required",
-            "img"=>"required|mimes:jpg,png,gif",
+            "name"=>"required"
         ]);
         $data = $req->all();
         if ($req->has("img")){
@@ -64,8 +63,7 @@ class Material extends Controller
     public function update_action(Request $req,$id)
     {
         $req->validate([
-            "name"=>"required",
-            "img"=>"mimes:jpg,png,gif",
+            "name"=>"required"
         ]);
         $data = $req->all();
         if ($req->has("img")){
