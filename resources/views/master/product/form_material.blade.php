@@ -20,9 +20,9 @@
                             <select name="material_id" id="" class="form-control">
                                 @foreach($data_material as $k => $v)
                                     @if(@$updated->material_id == $v->id))
-                                        <option value="{{$v->id}}" selected>{{$v->name}} - {{v->stok}} {{$v->size->name}}</option>
+                                        <option value="{{$v->id}}" selected>{{$v->name}} - {{$v->stok}} {{$v->size->name}}</option>
                                     @else
-                                        <option value="{{$v->id}}">{{$v->name}} - {{v->stok}} {{$v->size->name}}</option>
+                                        <option value="{{$v->id}}">{{$v->name}} - {{$v->stok}} {{$v->size->name}}</option>
                                     @endif
                                 @endforeach
                             </select>
