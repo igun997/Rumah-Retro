@@ -71,6 +71,8 @@
                                 <select name="exp" id="exp" class="form-control">
                                     <option>== Pilih ==</option>
                                     <option value="jne">JNE</option>
+                                    <option value="sicepat">Si Cepat</option>
+                                    <option value="wahana">Wahana</option>
                                 </select>
                             </td>
                             <td></td>
