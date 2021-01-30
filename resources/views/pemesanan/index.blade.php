@@ -48,6 +48,10 @@
                                         <a href="{{route("pemesanan.detail",$row->id)}}" class="btn btn-primary m-2">
                                             <li class="fa fa-eye"></li>
                                         </a>
+                                        
+                                         <a href="{{route("pemesanan.detail",$row->id)}}" class="btn btn-primary m-2">
+                                            <li class="fa fa-print"></li>
+                                        </a>
                                         @if(in_array(session()->get("level"),[\App\Casts\LevelAccount::PEMILIK]))
                                             @if(in_array($row->status,[\App\Casts\PurchaseStatus::CREATED]))
 
