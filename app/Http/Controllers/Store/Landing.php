@@ -90,15 +90,23 @@ class Landing extends Controller
             $order_id = $create_order->id;
             $failed = false;
             foreach ($myCart as $index => $item) {
-                $itemOrder = OrderItem::create([
-                    "order_id" => $order_id,
-                    "product_id" => $item->id,
-                    "qty" => $item->quantity,
-                    "price" => $item->price,
-                ]);
-                if (!$itemOrder) {
+                $min = Product::find($item->id);
+                if ($item->quantity >= $min->min_order){
+                    $itemOrder = OrderItem::create([
+                        "order_id" => $order_id,
+                        "product_id" => $item->id,
+                        "qty" => $item->quantity,
+                        "price" => $item->price,
+                    ]);
+                    if (!$itemOrder) {
+                        $failed = true;
+                    }
+                }else{
                     $failed = true;
+                    $create_order->delete();
+                    return back()->withErrors(['msg'=>"Minimal Order Produk $min->name Adalah ".$min->min_order." Pcs"]);
                 }
+
             }
             if (!$failed) {
                 $cart->clear();

@@ -24,6 +24,7 @@
                                 <th>No</th>
                                 <th>Nama Produk</th>
                                 <th>Harga</th>
+                                <th>Min Order</th>
                                 <th>Deskripsi</th>
                                 <th>Gambar</th>
                                 <th>Dibuat</th>
@@ -37,6 +38,7 @@
                                     <td>{{($num+1)}}</td>
                                     <td>{{$row->name}}</td>
                                     <td>{{number_format($row->price)}}</td>
+                                    <td>{{number_format($row->min_order)}}</td>
                                     <td>{{$row->deskripsi}}</td>
                                     <td>
                                         <img src="{{$row->img}}" class="img-fluid img-thumbnail" alt="">

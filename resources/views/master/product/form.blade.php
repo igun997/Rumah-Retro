@@ -23,6 +23,11 @@
                             <label>Harga Produk</label>
                             <input type="number" class="form-control" name="price"  value="{{@$data->price}}" required>
                         </div>
+
+                        <div class="form-group">
+                            <label>Minimal Beli</label>
+                            <input type="number" class="form-control" name="min_order"  value="{{@$data->min_order}}" required>
+                        </div>
                         <div class="form-group">
                             <label>Deskripsi</label>
                             <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control">{{@$data->deskripsi}}</textarea>

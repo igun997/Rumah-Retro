@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $price
  * @property string|null $deskripsi
  * @property string|null $img
+ * @property int $min_order
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -32,14 +33,16 @@ class Product extends Model
 	protected $table = 'products';
 
 	protected $casts = [
-		'price' => 'float'
+		'price' => 'float',
+		'min_order' => 'int'
 	];
 
 	protected $fillable = [
 		'name',
 		'price',
 		'deskripsi',
-		'img'
+		'img',
+		'min_order'
 	];
 
 	public function order_items()
