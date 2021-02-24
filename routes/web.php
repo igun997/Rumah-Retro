@@ -142,6 +142,7 @@ Route::prefix("orders")->name("orders.")->group(function (){
     Route::get("/complete","OrdersPelanggan@index_complete")->name("list_complete");
     Route::get("/cancel","OrdersPelanggan@index_cancel")->name("list_cancel");
     Route::post("/upload/{id}","OrdersPelanggan@upload")->name("upload");
+    Route::post("/upload_desain/{id}","OrdersPelanggan@upload_desain")->name("upload_desain");
     Route::get("/detail/{id}","OrdersPelanggan@detail")->name("detail");
 });
 

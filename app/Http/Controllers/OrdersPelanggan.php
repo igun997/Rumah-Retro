@@ -67,6 +67,23 @@ class OrdersPelanggan extends Controller
         return $this->loadView("index",compact("title","history"));
     }
 
+    public function upload_desain(Request $req,$id)
+    {
+        $req->validate([
+            "file"=>"mimes:jpg,jpeg,png,gif,pdf"
+        ]);
+        $order = Order::findOrFail($id);
+        if ($req->has("file")){
+            $newFile = md5($req->file("file")->getFilename().rand(10,99)).".".$req->file("file")->getClientOriginalExtension();
+            $order->desain = $req->file("file")->storePubliclyAs("public/bukti",$newFile);
+            $order->desain = str_replace("public/",url("storage")."/",$order->bukti);
+        }
+        if ($order->save()){
+            return $this->successBack(false);
+        }
+        return $this->failBack(false);
+    }
+
     public function upload(Request $req,$id)
     {
         $req->validate([
