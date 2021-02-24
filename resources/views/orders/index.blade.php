@@ -85,13 +85,13 @@
     <script>
         function submit(id){
             console.log("sunmit",id)
-            $("#submit_form_".id).submit();
+            $("#submit_form_"+id).submit();
         }
         function desain(id){
             console.log("desain",id)
-            let s = $("#_desain_form_".id);
+            let s = $("#_desain_form_"+id);
             console.log("desain",s);
-            console.log("id","#_desain_form_".id);
+            console.log("id","#_desain_form_"+id);
             s.submit();
         }
         $(document).ready(function () {
