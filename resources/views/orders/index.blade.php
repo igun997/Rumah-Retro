@@ -91,6 +91,7 @@
             console.log("desain",id)
             let s = $("#_desain_form_".id);
             console.log("desain",s);
+            console.log("id","#_desain_form_".id);
             s.submit();
         }
         $(document).ready(function () {
