@@ -76,7 +76,7 @@ class OrdersPelanggan extends Controller
         if ($req->has("file")){
             $newFile = md5($req->file("file")->getFilename().rand(10,99)).".".$req->file("file")->getClientOriginalExtension();
             $order->desain = $req->file("file")->storePubliclyAs("public/bukti",$newFile);
-            $order->desain = str_replace("public/",url("storage")."/",$order->bukti);
+            $order->desain = str_replace("public/",url("storage")."/",$order->desain);
         }
         if ($order->save()){
             return $this->successBack(false);
