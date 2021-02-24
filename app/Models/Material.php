@@ -64,13 +64,4 @@ class Material extends Model
 		return $this->belongsToMany(Purchase::class, 'purchase_materials')
 					->withPivot('id', 'suplier_id', 'qty', 'price');
 	}
-    public function sisa()
-    {
-        $used = 0;
-        $_a = ProductMaterial::where(["material_id"=>$this->id])->get();
-        foreach ($_a as $index => $item) {
-            $used += $item->qty;
-        }
-        return $this->stok - $used;
-    }
 }

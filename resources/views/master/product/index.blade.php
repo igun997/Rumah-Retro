@@ -54,6 +54,10 @@
                                             <li class="fa fa-cog"></li>
                                         </a>
 
+                                        <a href="{{route("master.product.add_sablon",$row->id)}}" class="btn btn-primary m-2">
+                                            <li class="fa fa-plane-slash"></li> Sablon
+                                        </a>
+
                                         <a href="{{route("master.product.delete",$row->id)}}" class="btn btn-danger m-2">
                                             <li class="fa fa-trash"></li>
                                         </a>

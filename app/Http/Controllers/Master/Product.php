@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductSablon;
 use App\Traits\ViewTrait;
 use App\Models\Product as ProductModel;
 use App\Models\ProductMaterial;
@@ -190,6 +191,34 @@ class Product extends Controller
     public function delete_material($id)
     {
         ProductMaterial::find($id)->delete();
+        return $this->successBack();
+    }
+
+    public function add_sablon($id)
+    {
+        $title = "Tambah Sablon Produk";
+        $route = route("master.product.add_sablon_action",$id);
+        $data = ProductSablon::where(["product_id"=>$id])->get();
+        return $this->loadView("form_sablon",compact("title","route","data","id"));
+    }
+
+    public function add_sablon_action(Request $req,$id)
+    {
+        $req->validate([
+            "name"=>"required",
+            "price"=>"required"
+        ]);
+        $create = ProductSablon::create(array_merge(["product_id"=>$id],$req->all()));
+        if ($create){
+            return $this->successBack();
+        }
+        return $this->failBack();
+    }
+
+    public function add_sablon_delete($id,$id_sablon)
+    {
+        $set = ProductSablon::find($id_sablon);
+        $set->delete();
         return $this->successBack();
     }
 }

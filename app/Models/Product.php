@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property Collection|OrderItem[] $order_items
  * @property Collection|Material[] $materials
+ * @property Collection|ProductSablon[] $product_sablons
  * @property Collection|ProductionMaterial[] $production_materials
  *
  * @package App\Models
@@ -54,6 +55,11 @@ class Product extends Model
 	{
 		return $this->belongsToMany(Material::class, 'product_materials')
 					->withPivot('id', 'qty');
+	}
+
+	public function product_sablons()
+	{
+		return $this->hasMany(ProductSablon::class);
 	}
 
 	public function production_materials()

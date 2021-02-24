@@ -132,7 +132,7 @@
                                     <td>{{$row->created_at->format("d/m/Y")}}</td>
                                     <td>{{$row->user->name}}</td>
                                     <td>Rp. {{number_format($row->total)}}</td>
-                                    <td>{{$row->notes}}</td>
+                                    <td>{!! $row->notes !!}</td>
                                     <td>{{\App\Casts\TypeStatus::lang($row->type)}}</td>
                                     <td>
                                         <img src="{{$row->bukti}}" onerror="this.src='//via.placeholder.com/400x200?text=Tidak%20Ada%20Bukti%20Pembayaran'" class="img-thumbnail img-fluid" alt="">
@@ -152,7 +152,7 @@
                                             </a>
                                         @elseif(\App\Casts\OrderStatus::CONFIRMED == $row->status)
 
-                                            <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::PROCESSING])}}" class="btn btn-success m-2">
+                                            <a href="#" data-url="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::PROCESSING])}}" class="btn btn-success m-2 process">
                                                 <li class="fa fa-arrow-circle-right"></li> Proses Pesanan
                                             </a>
                                         @elseif(\App\Casts\OrderStatus::PROCESSING == $row->status)
@@ -194,6 +194,15 @@
     <script>
         $(document).ready(function () {
             $("table").DataTable()
+            $(".process").on("click",function (){
+                const url = $(this).data("url")
+                c = prompt("Masukan Tanggal Selesai");
+                if (c){
+                    location.href = url+"&due="+c;
+                }else{
+                    location.href = url;
+                }
+            })
         })
     </script>
 @stop

@@ -142,13 +142,19 @@ class Penjualan extends Controller
     public function update_status(Request $req,$id)
     {
         $req->validate([
-            "status"=>"required"
+            "status"=>"required",
+            "due"=>"date"
         ]);
         $order = Order::findOrFail($id);
         $order->status = $req->status;
         $order->save();
         if($req->status == OrderStatus::PROCESSING){
-            $create = Production::create(["name"=>$order->user->name,"notes"=>$order->notes,"status"=>ProductionStatus::CREATED,"due_date"=>Carbon::now()->addDays(14)]);
+            $default = Carbon::now()->addDays(14);
+            $due = $default;
+            if ($req->due){
+                $due = Carbon::createFromFormat("d-m-Y",$req->due);
+            }
+            $create = Production::create(["name"=>$order->user->name,"notes"=>$order->notes,"status"=>ProductionStatus::CREATED,"due_date"=>$due]);
             if ($create){
                 $con = true;
                 $biaya_produksi = 0;

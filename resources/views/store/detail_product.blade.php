@@ -29,9 +29,15 @@
 						<p class="product-description">{{$data->deskripsi}}</p>
 						<h4 class="price">Harga: <span>Rp. {{number_format($data->price)}}</span></h4>
 						<h4 class="price">Minimal Beli : <span>{{number_format($data->min_order)}} Pcs</span></h4>
-						<div class="action">
-                                
+                        <div class="action">
+
                                 <form action="{{route("store.cart_action",$data->id)}}" id="product_{{$data->id}}" method="post">
+                                    <select name="product_sablon_id" id="sablon" class="form-control-lg m-1">
+                                        <option value="-">=== Pilih Sablon ===</option>
+                                        @foreach($data->product_sablons as $k => $v)
+                                            <option value="{{$v->id}}">{{$v->name}} - {{number_format($v->price)}}</option>
+                                        @endforeach
+                                    </select>
                                     <input type="text" name="product_id" value="{{$data->id}}" hidden>
                                     <button type="submit" class="cart_submit add-to-cart btn btn-default"  type="button">add to cart</button>
                                 </form>

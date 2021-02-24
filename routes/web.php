@@ -79,6 +79,10 @@ Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
         Route::post("/update/{id}","Product@update_action")->name("update_action");
         Route::post("/add","Product@add_action")->name("add_action");
 
+        Route::get("/sablon/{id}/add","Product@add_sablon")->name("add_sablon");
+        Route::post("/sablon/{id}/add","Product@add_sablon_action")->name("add_sablon_action");
+        Route::get("/sablon/{id}/delete/{id_sablon}","Product@add_sablon_delete")->name("add_sablon_delete");
+
         Route::get("/add/{id}/material","Product@add_material")->name("add_material");
         Route::get("/delete/material/{id}","Product@delete_material")->name("delete_material");
         Route::get("/update/{id}/material/{id_second}","Product@update_material")->name("update_material");
@@ -147,4 +151,8 @@ Route::prefix("produksi")->name("produksi.")->group(function (){
     Route::get("/update_status/{id}","Produksi@update_status")->name("update_status");
 });
 
+Route::prefix("laporan")->name("laporan.")->group(function (){
+    Route::get("/","LaporanControl@index")->name("list");
+    Route::post("/generate","LaporanControl@generate")->name("generate");
+});
 

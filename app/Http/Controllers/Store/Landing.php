@@ -127,7 +127,7 @@ class Landing extends Controller
         return $this->loadView("detail",compact("title","cart"));
     }
 
-    public function cart_action($id)
+    public function cart_action(Request $req,$id)
     {
         if (session()->get("id") === null){
             return  $this->failBack(false);
@@ -138,7 +138,9 @@ class Landing extends Controller
             'name' => $product->name,
             'price' => $product->price,
             'quantity' => 1,
-            'attributes' => [],
+            'attributes' => [
+                "product_sablon_id"=>$req->product_sablon_id
+            ],
             'associatedModel' => $product
         ]);
         return $this->successBack(false);
