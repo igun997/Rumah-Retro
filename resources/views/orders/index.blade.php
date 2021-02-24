@@ -84,9 +84,11 @@
     @include("msg")
     <script>
         function submit(id){
+            console.log("sunmit",id)
             $("#submit_form_".id).submit();
         }
         function desain(id){
+            console.log("desain",id)
             $("#desain_form_".id).submit();
         }
         $(document).ready(function () {
