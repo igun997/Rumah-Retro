@@ -133,11 +133,16 @@ class Landing extends Controller
             return  $this->failBack(false);
         }
         $product = Product::findOrFail($id);
+        if ($req->min_order){
+            $qty = $req->min_order;
+        }else{
+            $qty =1;
+        }
         $cart = Cart::session(session()->get("id"))->add([
             'id' => $id,
             'name' => $product->name,
             'price' => $product->price,
-            'quantity' => 1,
+            'quantity' => $qty,
             'attributes' => [
                 "product_sablon_id"=>$req->product_sablon_id
             ],

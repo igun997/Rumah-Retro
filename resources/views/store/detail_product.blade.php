@@ -39,6 +39,7 @@
                                         @endforeach
                                     </select>
                                     <input type="text" name="product_id" value="{{$data->id}}" hidden>
+                                    <input type="text" name="min_order" value="{{$data->min_order}}" hidden>
                                     <button type="submit" class="cart_submit add-to-cart btn btn-default"  type="button">add to cart</button>
                                 </form>
 						</div>
