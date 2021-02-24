@@ -120,6 +120,7 @@
                                 <th>Catatan</th>
                                 <th>Jenis Transaksi</th>
                                 <th>Bukti</th>
+                                <th>Desain</th>
                                 <th>Status</th>
                                 <th>Diubah</th>
                                 <th>Aksi</th>
@@ -136,6 +137,9 @@
                                     <td>{{\App\Casts\TypeStatus::lang($row->type)}}</td>
                                     <td>
                                         <img src="{{$row->bukti}}" onerror="this.src='//via.placeholder.com/400x200?text=Tidak%20Ada%20Bukti%20Pembayaran'" class="img-thumbnail img-fluid" alt="">
+                                    </td>
+                                    <td>
+                                        <img src="{{$row->desain}}" onerror="this.src='//via.placeholder.com/400x200?text=Tidak%20Ada%20Bukti%20Pembayaran'" class="img-thumbnail img-fluid" alt="">
                                     </td>
                                     <td>{{\App\Casts\OrderStatus::lang($row->status)}}</td>
                                     <td>{{$row->updated_at->format("d/m/Y")}}</td>
