@@ -83,18 +83,8 @@ class Gateway
                             "icon" => "fa fa-file"
                         ]);
                         $e->menu->add([
-                            "text" => "Laporan Pemesanan",
-                            "url" => "laporan/pemesanan",
-                            "icon" => "fa fa-file"
-                        ]);
-                        $e->menu->add([
-                            "text" => "Laporan Bahan Baku",
-                            "url" => "laporan/bahan_baku",
-                            "icon" => "fa fa-file"
-                        ]);
-                        $e->menu->add([
-                            "text" => "Laporan Penjualan",
-                            "url" => "laporan/penjualan",
+                            "text" => "Laporan",
+                            "url" => "laporan",
                             "icon" => "fa fa-file"
                         ]);
                     });
@@ -135,12 +125,7 @@ class Gateway
 
                         $e->menu->add([
                             "text" => "Laporan Pemesanan",
-                            "url" => "laporan/pemesanan",
-                            "icon" => "fa fa-file"
-                        ]);
-                        $e->menu->add([
-                            "text" => "Laporan Bahan Baku",
-                            "url" => "laporan/bahan_baku",
+                            "url" => "laporan",
                             "icon" => "fa fa-file"
                         ]);
 
@@ -153,8 +138,8 @@ class Gateway
                             "icon" => "fa fa-file"
                         ]);
                         $e->menu->add([
-                            "text" => "Laporan Produksi",
-                            "url" => "laporan/produksi",
+                            "text" => "Laporan",
+                            "url" => "laporan",
                             "icon" => "fa fa-file"
                         ]);
                     });
