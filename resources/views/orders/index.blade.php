@@ -89,7 +89,9 @@
         }
         function desain(id){
             console.log("desain",id)
-            $("#_desain_form_".id).submit();
+            let s = $("#_desain_form_".id);
+            console.log("desain",s);
+            s.submit();
         }
         $(document).ready(function () {
             $("table").DataTable()
