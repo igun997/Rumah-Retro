@@ -58,7 +58,7 @@
                                             @endif
                                             @if($row->status === \App\Casts\OrderStatus::CONFIRMED)
                                                 <label class="btn-warning btn">
-                                                    <form method="post" enctype="multipart/form-data" id="submit_form_{{$row->id}}" action="{{route("orders.upload_desain",$row->id)}}">
+                                                    <form method="post" enctype="multipart/form-data" id="desain_form_{{$row->id}}" action="{{route("orders.upload_desain",$row->id)}}">
                                                         <input type="file" name="file" onchange="desain({{$row->id}})" class="form-control-file">
                                                         <li class="fa fa-upload"></li> Upload Desain
                                                     </form>
