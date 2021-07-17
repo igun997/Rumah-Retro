@@ -28,7 +28,7 @@
 						</div>
 						<p class="product-description">{{$data->deskripsi}}</p>
 						<h4 class="price">Harga: <span>Rp. {{number_format($data->price)}}</span></h4>
-						<h4 class="price">Minimal Beli : <span>{{number_format($data->min_order)}} Pcs</span></h4>
+						<h4 class="price">Minimal Beli : <span>{{number_format($data->min_order)}} Kg</span></h4>
                         <div class="action">
 
                                 <form action="{{route("store.cart_action",$data->id)}}" id="product_{{$data->id}}" method="post">
