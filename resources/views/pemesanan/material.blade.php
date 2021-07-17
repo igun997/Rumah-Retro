@@ -44,7 +44,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Daftar Bahan Baku</div>
+                    <div class="card-title">Daftar Pakan</div>
                 </div>
                 <div class="card-body">
 

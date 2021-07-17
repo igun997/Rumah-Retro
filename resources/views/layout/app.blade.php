@@ -53,7 +53,7 @@
                             <ul id="navigation">
                                 <li><a href="/">Beranda</a></li>
                                 <li><a href="/product">Produk Kami</a></li>
-                                <li><a href="/about">Tentang Rumah Retro</a></li>
+                                <li><a href="/about">Tentang Tukang Ikan</a></li>
                                 <li><a href="/contact">Hubungi Kami</a></li>
                             </ul>
                         </nav>

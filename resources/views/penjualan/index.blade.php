@@ -160,17 +160,9 @@
                                                 <li class="fa fa-arrow-circle-right"></li> Proses Pesanan
                                             </a>
                                         @elseif(\App\Casts\OrderStatus::PROCESSING == $row->status)
-                                            @if(\App\Models\Production::where("name",$row->user->name)->count() > 0)
-                                            @if(\App\Models\Production::where("name",$row->user->name)->first()->status === \App\Casts\ProductionStatus::COMPLETED)
-                                                    <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::SHIPPING])}}" class="btn btn-success m-2">
-                                                        <li class="fa fa-arrow-circle-right"></li> Kirim Pesanan
-                                                    </a>
-                                                @else
-                                                <p class="btn btn-warning">Produksi Sedang Berlangsung . . .</p>
-                                                @endif
-                                                @else
-                                                <p class="btn btn-danger">Tidak Ada Aktifitas Produksi Terkait</p>
-                                                @endif
+                                            <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::SHIPPING])}}" class="btn btn-success m-2">
+                                                <li class="fa fa-arrow-circle-right"></li> Kirim Pesanan
+                                            </a>
                                         @elseif(\App\Casts\OrderStatus::SHIPPING == $row->status)
                                             <a href="{{route("penjualan.update_status",[$row->id,"status"=>\App\Casts\OrderStatus::COMPLETED])}}" class="btn btn-success m-2">
                                                 <li class="fa fa-arrow-circle-right"></li> Selesaikan

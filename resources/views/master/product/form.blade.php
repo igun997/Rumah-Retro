@@ -43,6 +43,21 @@
                             <input type="file" class="form-control" name="img"  accept="image/*" {{(isset($route))?"":"required"}}>
                         </div>
                         <div class="form-group">
+                            <label>Ikan Siap Dijual ?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ready_to_sell" id="exampleRadios1" value="1" {{@$data->ready_to_sell === 1 ?'checked':''}}>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Iya
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ready_to_sell" id="exampleRadios2" value="0" {{@$data->ready_to_sell === 0 ?'checked':''}}>
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Tidak
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <button class="btn btn-primary btn-block btn-lg">Simpan Data</button>
                         </div>
                     </form>

@@ -21,8 +21,6 @@ class LevelAccount
             return "Pemilik";
         }elseif ($level == LevelAccount::GUDANG){
             return "Gudang";
-        }elseif ($level == LevelAccount::PRODUKSI){
-            return "Produksi";
         }elseif ($level == LevelAccount::PELANGGAN){
             return "Pelanggan";
         }elseif ($level == LevelAccount::KASIR){

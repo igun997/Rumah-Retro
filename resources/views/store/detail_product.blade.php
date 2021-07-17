@@ -32,12 +32,6 @@
                         <div class="action">
 
                                 <form action="{{route("store.cart_action",$data->id)}}" id="product_{{$data->id}}" method="post">
-                                    <select name="product_sablon_id" id="sablon" class="form-control-lg m-1">
-                                        <option value="-">=== Pilih Sablon ===</option>
-                                        @foreach($data->product_sablons as $k => $v)
-                                            <option value="{{$v->id}}">{{$v->name}} - {{number_format($v->price)}}</option>
-                                        @endforeach
-                                    </select>
                                     <input type="text" name="product_id" value="{{$data->id}}" hidden>
                                     <input type="text" name="min_order" value="{{$data->min_order}}" hidden>
                                     <button type="submit" class="cart_submit add-to-cart btn btn-default"  type="button">add to cart</button>

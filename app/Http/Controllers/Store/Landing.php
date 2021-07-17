@@ -28,33 +28,33 @@ class Landing extends Controller
 
     public function index()
     {
-        $title = "Selamat Datang Di Rumah Retro";
-        $products = Product::all();
+        $title = "Selamat Datang Di Tukang Ikan";
+        $products = Product::where(["ready_to_sell"=>1])->get();
         return $this->loadView("landing",compact("title","products"));
     }
 
     public function about()
     {
-        $title = "Rumah Retro - About Us";
+        $title = "Tukang Ikan - About Us";
         $products = Product::all();
         return $this->loadView("about",compact("title","products"));
     }
 
     public function contact()
     {
-        $title = "Rumah Retro - Contact Us";
+        $title = "Tukang Ikan - Contact Us";
         $products = Product::all();
         return $this->loadView("contact",compact("title","products"));
     }
     public function product()
     {
-        $title = "Rumah Retro - Produk Kami";
+        $title = "Tukang Ikan - Produk Kami";
         $products = Product::all();
         return $this->loadView("product",compact("title","products"));
     }
     public function detail_product($id)
     {
-        $title = "Rumah Retro - Produk Kami";
+        $title = "Tukang Ikan - Produk Kami";
         $data = Product::where('id',$id)->first();
         // return $data;
         return $this->loadView("detail_product",compact("title","data"));
@@ -144,7 +144,7 @@ class Landing extends Controller
             'price' => $product->price,
             'quantity' => $qty,
             'attributes' => [
-                "product_sablon_id"=>$req->product_sablon_id
+
             ],
             'associatedModel' => $product
         ]);

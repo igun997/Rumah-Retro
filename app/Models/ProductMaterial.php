@@ -29,6 +29,7 @@ class ProductMaterial extends Model
 	protected $casts = [
 		'material_id' => 'int',
 		'qty' => 'float',
+		'created_at' => 'datetime',
 		'product_id' => 'int'
 	];
 

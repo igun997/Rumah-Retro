@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <form action="{{$route}}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label>Nama Material</label>
+                            <label>Nama Pakan</label>
                             <select name="material_id" id="" class="form-control">
                                 @foreach($data_material as $k => $v)
                                     @if(@$updated->material_id == $v->id))
@@ -28,7 +28,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Jumlah Material</label>
+                            <label>Jumlah Pakan</label>
                             <input type="number" step="0.01" min="0" name="qty" value="{{@$updated->qty}}" class="form-control">
                         </div>
 
@@ -42,7 +42,7 @@
         <div class="col-md-8 col-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Data Material</div>
+                    <div class="card-title">Data Pemberian Pakan</div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -50,9 +50,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Material</th>
-                                    <th>Jumlah Yang Di Perlukan</th>
-                                    <th>Aksi</th>
+                                    <th>Nama Pakan</th>
+                                    <th>Jumlah Pakan</th>
+                                    <th>Tanggal Pemberian Pakan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,16 +61,7 @@
                                         <td>{{$k+1}}</td>
                                         <td>{{$v->material->name}}</td>
                                         <td>{{$v->qty}} {{$v->material->size->name}}</td>
-                                        <td>
-                                            <a href="{{route("master.product.add_material",[$id,"comp"=>$v->id])}}" class="btn btn-warning m-2">
-                                                <li class="fa fa-edit"></li>
-                                            </a>
-
-
-                                            <a href="{{route("master.product.delete_material",$v->id)}}" class="btn btn-danger m-2">
-                                                <li class="fa fa-trash"></li>
-                                            </a>
-                                        </td>
+                                        <td>{{$v->created_at->format("d/m/Y H:i:s")}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

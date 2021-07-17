@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Laporan Bahan Baku</title>
+    <title>Laporan Pakan</title>
     <style>
         td {
             padding:3px 3px 3px;
@@ -18,12 +18,12 @@
     </style>
 </head>
 <body>
-<h2 align="center">LAPORAN Bahan Baku</h2>
+<h2 align="center">LAPORAN Pakan</h2>
 <h5 align="center">PERIODE : {{date("d-m-Y",strtotime($req->start))}} - {{date("d-m-Y",strtotime($req->end))}}</h5>
 <table class='table_po'>
     <tr style="font-weight:bold">
         <td>No</td>
-        <td>Nama Bahan Baku</td>
+        <td>Nama Pakan</td>
         <td>Harga</td>
         <td>Stok</td>
         <td>Terdaftar Pada</td>

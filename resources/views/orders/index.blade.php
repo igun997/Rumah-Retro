@@ -23,7 +23,6 @@
                                 <th>Total Order</th>
                                 <th>Jumlah Barang</th>
                                 <th>Bukti Pembayaran</th>
-                                <th>Desain</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -39,9 +38,6 @@
                                             <img src="{{$row->bukti}}" class="img-fluid img-thumbnail" alt="">
                                         </td>
                                         <td>
-                                            <img src="{{$row->desain}}" class="img-fluid img-thumbnail" alt="">
-                                        </td>
-                                        <td>
                                             {{\App\Casts\OrderStatus::lang($row->status)}}
                                         </td>
                                         <td align="center">
@@ -53,14 +49,6 @@
                                                     <form method="post" enctype="multipart/form-data" id="submit_form_{{$row->id}}" action="{{route("orders.upload",$row->id)}}">
                                                         <input type="file" name="file" onchange="submit({{$row->id}})" class="form-control-file">
                                                         <li class="fa fa-upload"></li> Upload Bukti
-                                                    </form>
-                                                </label>
-                                            @endif
-                                            @if($row->status === \App\Casts\OrderStatus::CONFIRMED)
-                                                <label class="btn-warning btn">
-                                                    <form method="post" enctype="multipart/form-data" id="_desain_form_{{$row->id}}" action="{{route("orders.upload_desain",$row->id)}}">
-                                                        <input type="file" name="file" onchange="desain({{$row->id}})" class="form-control-file">
-                                                        <li class="fa fa-upload"></li> Upload Desain
                                                     </form>
                                                 </label>
                                             @endif

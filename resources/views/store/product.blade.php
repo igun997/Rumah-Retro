@@ -1,5 +1,5 @@
 @extends("layout.app")
-@section("title","Selamat Datang Di Rumah Retro")
+@section("title","Selamat Datang Di Tukang Ikan")
 @section("content")
 
     <div class="popular-items">
@@ -9,7 +9,7 @@
                 <div class="col-xl-7 col-lg-8 col-md-10">
                     <div class="section-tittle text-center">
                         <h2>Produk Kami</h2>
-                        <p>Produk Terbaik, Datang Dari Tangan Yang Terbaik</p>
+                        <p>Produk Terbaik, Datang Dari Profesional </p>
                     </div>
                 </div>
             </div>

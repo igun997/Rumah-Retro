@@ -22,7 +22,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Bahan Baku</th>
+                                <th>Nama Pakan</th>
                                 <th>Gambar</th>
                                 <th>Stok</th>
                                 <th>Deskripsi</th>

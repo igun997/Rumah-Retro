@@ -1,5 +1,5 @@
 @extends("layout.app")
-@section("title","Selamat Datang Di Rumah Retro")
+@section("title","Selamat Datang Di Tukang Ikan")
 @section("content")
 
     <div class="popular-items">
@@ -10,7 +10,7 @@
                     <div class="section-tittle text-center">
                         <h2>Contact Us</h2>
                         <p class="text-justify">
-                            Rumah Retro – Clothing Industri berdiri sejak bulan Juni 2003 dan merupakan industri yang dikelola oleh tenaga professional muda yang penuh kreativitas dan inovasi serta mempunyai semangat kerja yang tinggi, atas kepercayaan dari konsumen yang masih kerjasama dengan kami dari perusahaan, instansi, lembaga pendidikan, organisasi, dan komunitas. Kami terus menerus mengembangkan sumber daya manusia maupun alat-alat pendukung usaha
+                            Tukang Ikan – Belum DI iisi juga
                         </p>
                         <br>
                     </div>
@@ -22,15 +22,9 @@
                 </div>
                 
                 <div class="col-4">
-                    <h2>Rumah Retro Bandung</h2>
+                    <h2>Tukang Ikan Bandung</h2>
                     <address>
-                        <strong>Rumah Retro Bandung</strong><br>
-                        Jalan Gempol Elok II<br>
-                        No 34 RT 05 RW 13<br>
-                        Kel, Cigondewah Kaler<br>
-                        Bandung<br>
-                        <abbr title="Phone">P:</abbr> 0895-3561-19072 <br>
-                        <abbr title="Email">P:</abbr> rumahretrokonveksi@gmail.com
+                        <strong>Tukang Ikan Bandung</strong><br>
                     </address>
                 </div>
             </div>

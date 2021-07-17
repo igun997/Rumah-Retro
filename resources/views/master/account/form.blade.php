@@ -44,14 +44,12 @@
                                     <option value="{{\App\Casts\LevelAccount::PELANGGAN}}">Pelanggan</option>
                                     <option value="{{\App\Casts\LevelAccount::PEMILIK}}">Pemilik</option>
                                     <option value="{{\App\Casts\LevelAccount::GUDANG}}">Gudang</option>
-                                    <option value="{{\App\Casts\LevelAccount::PRODUKSI}}">Produksi</option>
                                     <option value="{{\App\Casts\LevelAccount::KASIR}}">Kasir</option>
                                 @else
                                     <option value="{{\App\Casts\LevelAccount::ADMIN}}">Admin</option>
                                     <option value="{{\App\Casts\LevelAccount::PELANGGAN}}">Pelanggan</option>
                                     <option value="{{\App\Casts\LevelAccount::PEMILIK}}">Pemilik</option>
                                     <option value="{{\App\Casts\LevelAccount::GUDANG}}">Gudang</option>
-                                    <option value="{{\App\Casts\LevelAccount::PRODUKSI}}">Produksi</option>
                                     <option value="{{\App\Casts\LevelAccount::KASIR}}">Kasir</option>
                                 @endif
                             </select>

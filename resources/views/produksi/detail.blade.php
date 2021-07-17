@@ -60,9 +60,9 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Bahan Baku</th>
+                                <th>Nama Pakan</th>
                                 <th>Jumlah Terpakai</th>
-                                <th>Harga Bahan Baku</th>
+                                <th>Harga Pakan</th>
                                 <th>Stok Sekarang</th>
                                 <th>Biaya</th>
                             </tr>

@@ -27,6 +27,8 @@
                                 <th>Min Order</th>
                                 <th>Deskripsi</th>
                                 <th>Gambar</th>
+                                <th>Siap Dijual</th>
+                                <th>Umur</th>
                                 <th>Dibuat</th>
                                 <th>Diubah</th>
                                 <th>Aksi</th>
@@ -43,19 +45,18 @@
                                     <td>
                                         <img src="{{$row->img}}" class="img-fluid img-thumbnail" alt="">
                                     </td>
+                                    <td>
+                                        {{$row->ready_to_sell === 1 ?'Siap Dijual':'Tidak Dijual'}}
+                                    </td>
+                                    <td>{{($row->materials->count() > 0)?ceil($row->materials->count()/2):0}} Hari</td>
                                     <td>{{($row->created_at !== null) ? $row->created_at->format("d-m-Y"):"-"}}</td>
                                     <td>{{($row->updated_at !== null) ? $row->updated_at->format("d-m-Y"):"-"}}</td>
                                     <td>
                                         <a href="{{route("master.product.update",$row->id)}}" class="btn btn-warning m-2">
                                             <li class="fa fa-edit"></li>
                                         </a>
-
                                         <a href="{{route("master.product.add_material",$row->id)}}" class="btn btn-primary m-2">
                                             <li class="fa fa-cog"></li>
-                                        </a>
-
-                                        <a href="{{route("master.product.add_sablon",$row->id)}}" class="btn btn-primary m-2">
-                                            <li class="fa fa-plane-slash"></li> Sablon
                                         </a>
 
                                         <a href="{{route("master.product.delete",$row->id)}}" class="btn btn-danger m-2">

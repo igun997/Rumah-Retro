@@ -54,7 +54,7 @@ class Gateway
                             "icon"=>"fa fa-file"
                         ]);
                         $e->menu->add([
-                            "text"=>"Data Material",
+                            "text"=>"Data Pakan",
                             "url"=>"master/material",
                             "icon"=>"fa fa-file"
                         ]);
@@ -101,7 +101,7 @@ class Gateway
                             "icon"=>"fa fa-file"
                         ]);
                         $e->menu->add([
-                            "text"=>"Data Material",
+                            "text"=>"Data Pakan",
                             "url"=>"master/material",
                             "icon"=>"fa fa-file"
                         ]);
@@ -111,14 +111,10 @@ class Gateway
                             "icon"=>"fa fa-file"
                         ]);
 
-                        $e->menu->add([
-                            "text" => "Produksi",
-                            "url" => "produksi",
-                            "icon" => "fa fa-file"
-                        ]);
+
 
                         $e->menu->add([
-                            "text"=>"Pemesanan Bahan Baku",
+                            "text"=>"Pemesanan Pakan",
                             "url"=>"pemesanan",
                             "icon"=>"fa fa-file"
                         ]);
@@ -130,20 +126,6 @@ class Gateway
                         ]);
 
                     });
-                }elseif ($level == LevelAccount::PRODUKSI){
-                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
-                        $e->menu->add([
-                            "text" => "Produksi",
-                            "url" => "produksi",
-                            "icon" => "fa fa-file"
-                        ]);
-                        $e->menu->add([
-                            "text" => "Laporan",
-                            "url" => "laporan",
-                            "icon" => "fa fa-file"
-                        ]);
-                    });
-
                 }elseif ($level == LevelAccount::PELANGGAN){
                     Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
                         $e->menu->add([

@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <form action="{{$route}}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label>Nama Bahan Baku</label>
+                            <label>Nama Pakan</label>
                             <input type="text" class="form-control" name="name"  value="{{@$data->name}}" required>
                         </div>
                         <div class="form-group">
@@ -44,7 +44,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Harga Bahan Baku</label>
+                            <label>Harga Pakan</label>
                             <input type="number" min="0" class="form-control" name="price"  value="{{@$data->price}}" required>
                         </div>
                         @if(isset($data))
@@ -53,7 +53,7 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <label>Gambar Bahan Baku</label>
+                            <label>Gambar Pakan</label>
                             <input type="file" class="form-control" name="img"  accept="image/*" {{(isset($route))?"":"required"}}>
                         </div>
                         <div class="form-group">

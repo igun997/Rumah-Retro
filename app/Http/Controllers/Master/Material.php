@@ -19,20 +19,20 @@ class Material extends Controller
     public function index()
     {
         $data = MaterialModel::all();
-        $title = "Data Bahan Baku";
+        $title = "Data Pakan";
         return $this->loadView("index",compact("title","data"));
     }
 
     public function add()
     {
-        $title = "Tambah Bahan Baku";
+        $title = "Tambah Pakan";
         $route = route("master.material.add_action");
         return $this->loadView("form",compact("title","route"));
     }
 
     public function update($id)
     {
-        $title = "Ubah Bahan Baku";
+        $title = "Ubah Pakan";
         $route = route("master.material.update_action",$id);
         $data = MaterialModel::where(["id"=>$id]);
         if ($data->count() === 0){

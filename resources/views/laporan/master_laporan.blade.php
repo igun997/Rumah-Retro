@@ -18,10 +18,9 @@
                         <div class="form-group">
                             <label>Jenis Laporan</label>
                             <select name="type" id="type" class="form-control">
-                                <option value="bahan_baku">Bahan Baku</option>
+                                <option value="bahan_baku">Pakan</option>
                                 <option value="penjualan">Penjualan</option>
                                 <option value="pengguna">Pengguna</option>
-                                <option value="produksi">Produksi</option>
                             </select>
                         </div>
                         <div class="form-group">

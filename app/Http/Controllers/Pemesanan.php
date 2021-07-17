@@ -20,7 +20,7 @@ class Pemesanan extends Controller
 
     public function index()
     {
-        $title = "Pemesanan Bahan Baku";
+        $title = "Pemesanan Pakan";
         $data = Purchase::orderBy("id","desc")->get();
         return $this->loadView("index",compact("title","data"));
     }
@@ -32,7 +32,7 @@ class Pemesanan extends Controller
             return $this->failBack(false);
         }
         $data = $data->first();
-        $title = "Detail Pemesanan Bahan Baku";
+        $title = "Detail Pemesanan Pakan";
         return $this->loadView("detail",compact("data","title","id"));
     }
 
@@ -98,7 +98,7 @@ class Pemesanan extends Controller
             return $this->failBack(false);
         }
         $data = $data->first();
-        $title = "Tambahkan Bahan Baku";
+        $title = "Tambahkan Pakan";
         $route = route("pemesanan.material_action",$id);
         $data_material = \App\Models\Material::all();
         return $this->loadView("material",compact("data","title","route","data_material"));

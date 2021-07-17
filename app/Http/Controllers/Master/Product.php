@@ -51,7 +51,7 @@ class Product extends Controller
         }
         $data = ProductMaterial::where(["product_id"=>$id])->get();
         $data_material = \App\Models\Material::all();
-        $title = "Tambah Material Produk ".$product->first()->name;
+        $title = "Tambah Pakan  ".$product->first()->name;
         $route = route("master.product.add_material",$id);
         $updated = null;
         if($req->has("comp")){
