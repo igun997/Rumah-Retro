@@ -21,6 +21,29 @@
     <link rel="stylesheet" href="{{url("assets/css/slick.css")}}">
     <link rel="stylesheet" href="{{url("assets/css/nice-select.css")}}">
     <link rel="stylesheet" href="{{url("assets/css/style.css")}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6er
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@yield("title")</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{{url("assets/img/favicon.ico")}}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{url("assets/css/bootstrap.min.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/owl.carousel.min.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/flaticon.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/slicknav.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/animate.min.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/magnific-popup.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/fontawesome-all.min.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/themify-icons.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/slick.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/nice-select.css")}}">
+    <link rel="stylesheet" href="{{url("assets/css/style.css")}}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 </head>
 
@@ -53,7 +76,7 @@
                             <ul id="navigation">
                                 <li><a href="/">Beranda</a></li>
                                 <li><a href="/product">Produk Kami</a></li>
-                                <li><a href="/about">Tentang Tukang Ikan</a></li>
+                                <li><a href="/about">Tentang Lele Bujang</a></li>
                                 <li><a href="/contact">Hubungi Kami</a></li>
                             </ul>
                         </nav>

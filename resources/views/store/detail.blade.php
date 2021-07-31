@@ -45,6 +45,53 @@
                                         </div>
                                         <button class="btn btn-primary" type="submit">Ubah</button>
                                     </form>
+                    @extends('layout.app')
+
+@section('title',$title)
+@section('content')
+    <section class="cart_area section_padding">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nama Produk</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(count($cart) > 0)
+                        @php
+                        $total = 0;
+                        @endphp
+                        @foreach($cart as $key => $row)
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="{{$row->associatedModel->img}}" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>{{$row->associatedModel->name}}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>Rp. {{number_format($row->price)}}</h5>
+                                </td>
+                                <td>
+                                    @php
+                                        $total += $row->quantity
+                                    @endphp
+                                    <form action="{{route("store.cart_update",$row->id)}}" method="post">
+                                        <div class="product_count">
+                                            <input type="number" required value="{{$row->quantity}}" min="0"  name="qty">
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Ubah</button>
+                                    </form>
                                 </td>
                                 <td>
                                     <h5>Rp. {{$row->getPriceSum()}}</h5>
