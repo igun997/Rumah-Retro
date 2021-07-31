@@ -18,26 +18,6 @@
                         <li class="list-group-item active">
                             Rincian Biaya
                         </li>
-                        <li class="list-group-i@extends('adminlte::page')
-
-@section('title', ((isset($title))?$title:""))
-
-@section('content_header')
-
-@stop
-
-@section('content')
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Data Pesanan</div>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group m-1">
-                        <li class="list-group-item active">
-                            Rincian Biaya
-                        </li>
                         <li class="list-group-item">
                             <b>Tgl Pesan </b> : {{$order->created_at->format("d/m/Y")}}
                         </li>
