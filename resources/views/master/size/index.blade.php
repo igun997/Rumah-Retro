@@ -28,36 +28,6 @@
                                 <th>Aksi</th>
                             </tr>
                             </thead>
-                  @extends('adminlte::page')
-
-@section('title', ((isset($title))?$title:""))
-
-@section('content_header')
-
-@stop
-
-@section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">{{((isset($title))?$title:"")}}</div>
-                </div>
-                <div class="card-body">
-                    <a href="{{route("master.size.add")}}" class="btn btn-success ml-2 mb-4">
-                        <li class="fa fa-plus"></li> Tambah Data
-                    </a>
-                    <div class="table-responsive">
-                        <table  class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Ukuran</th>
-                                <th>Dibuat</th>
-                                <th>Diubah</th>
-                                <th>Aksi</th>
-                            </tr>
-                            </thead>
                             <tbody>
                             @foreach($data as $num => $row)
                                 <tr>
