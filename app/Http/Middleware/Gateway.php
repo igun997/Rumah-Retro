@@ -167,7 +167,13 @@ class Gateway
                             ],
                         ]);
                     });
-
+                    Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e){
+                        $e->menu->add([
+                            "text"=>"Alamat Pengiriman",
+                            "url"=>"/alamat",
+                            "icon"=>"fa fa-users"
+                        ]);
+                    });
                 }elseif ($level == LevelAccount::KASIR){
                     Event::listen("JeroenNoten\LaravelAdminLte\Events\BuildingMenu",function ($e) {
                         $e->menu->add([

@@ -28,6 +28,10 @@
             <label for="no_hp">Alamat</label>
             <textarea name="alamat" class="form-control" id="" cols="30" rows="10"></textarea>
         </div>
+        <div class="form-group">
+            <label for="no_hp">Alamat</label>
+            <textarea name="alamat" class="form-control" id="" cols="30" rows="10"></textarea>
+        </div>
         <div class="row">
             <div class="col-12">
                 <button type=submit class="btn btn-block btn-flat btn-primary">

@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-<h2 align="center">LAPORAN Pakan</h2>
+<h2 align="center">Laporan Pakan</h2>
 <h5 align="center">PERIODE : {{date("d-m-Y",strtotime($req->start))}} - {{date("d-m-Y",strtotime($req->end))}}</h5>
 <table class='table_po'>
     <tr style="font-weight:bold">
@@ -27,6 +27,7 @@
         <td>Harga</td>
         <td>Stok</td>
         <td>Terdaftar Pada</td>
+        <td>Tanda Tangan</td>
     </tr>
     @foreach($data as $k => $r)
         <tr>
@@ -35,6 +36,7 @@
             <td>{{number_format($r->price)}}</td>
             <td>{{$r->stock}}</td>
             <td>{{$r->created_at->format("d-m-Y")}}</td>
+            <td></td>
         </tr>
     @endforeach
 </table>

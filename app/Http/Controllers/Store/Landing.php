@@ -28,33 +28,33 @@ class Landing extends Controller
 
     public function index()
     {
-        $title = "Selamat Datang Di Tukang Ikan";
+        $title = "Selamat Datang Di Lele Bujang";
         $products = Product::where(["ready_to_sell"=>1])->get();
         return $this->loadView("landing",compact("title","products"));
     }
 
     public function about()
     {
-        $title = "Tukang Ikan - About Us";
+        $title = "Lele Bujang - About Us";
         $products = Product::all();
         return $this->loadView("about",compact("title","products"));
     }
 
     public function contact()
     {
-        $title = "Tukang Ikan - Contact Us";
+        $title = "Lele Bujang - Contact Us";
         $products = Product::all();
         return $this->loadView("contact",compact("title","products"));
     }
     public function product()
     {
-        $title = "Tukang Ikan - Produk Kami";
+        $title = "Lele Bujang - Produk Kami";
         $products = Product::all();
         return $this->loadView("product",compact("title","products"));
     }
     public function detail_product($id)
     {
-        $title = "Tukang Ikan - Produk Kami";
+        $title = "Lele Bujang - Produk Kami";
         $data = Product::where('id',$id)->first();
         // return $data;
         return $this->loadView("detail_product",compact("title","data"));
@@ -124,7 +124,9 @@ class Landing extends Controller
             $cart = Cart::session(session()->get("id"))->getContent();
 
         }
-        return $this->loadView("detail",compact("title","cart"));
+        $info = User::find(session()->get("id"));
+
+        return $this->loadView("detail",compact("title","cart","info"));
     }
 
     public function cart_action(Request $req,$id)

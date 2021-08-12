@@ -125,6 +125,20 @@
                                 <b>Catatan</b>
                             </td>
                             <td id="catatan">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" value="1" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Alamat Pertama
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" value="2" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Alamat Kedua
+                                        </label>
+                                    </div>
+                                </div>
                                 <textarea id="notes" id="" cols="30" rows="10" class="form-control"></textarea>
                             </td>
                             <td></td>
@@ -155,9 +169,16 @@
 @section("js")
     <script>
         $(document).ready(()=>{
-
+            const alamat = {
+                alamat:'{{$info->alamat}}',
+                alamat2:'{{$info->alamat2}}',
+            }
             $("select").niceSelect("destroy");
             $("#submit_data").hide();
+            $("input[name=flexRadioDefault]").one("change",(c)=>{
+                console.log("c",alamat[`alamat${c.target.value}`])
+                $("#notes").val(alamat[`alamat${c.target.value}`])
+            })
             $("#lanjutkan").on("click",function (){
                 $("select").prop("disabled",true)
                 $("textarea").prop("disabled",true)
