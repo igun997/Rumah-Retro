@@ -107,6 +107,11 @@ Route::prefix("master")->name("master.")->namespace("Master")->group(function(){
     });
 });
 
+Route::prefix("alamat")->name("alamat.")->group(function (){
+    Route::get("/","AlamatControl@index")->name("list");
+    Route::post("/","AlamatControl@add_action")->name("add_action");
+
+});
 Route::prefix("pemesanan")->name("pemesanan.")->group(function (){
     Route::get("/","Pemesanan@index")->name("list");
     Route::get("/add","Pemesanan@add")->name("add");

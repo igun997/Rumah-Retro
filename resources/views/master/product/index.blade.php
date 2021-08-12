@@ -48,7 +48,7 @@
                                     <td>
                                         {{$row->ready_to_sell === 1 ?'Siap Dijual':'Tidak Dijual'}}
                                     </td>
-                                    <td>{{($row->materials->count() > 0)?ceil($row->materials->count()/2):0}} Hari</td>
+                                    <td>{{($row->created_at !== null)?$row->created_at->diffInDays(\Carbon\Carbon::now()):0}} Hari</td>
                                     <td>{{($row->created_at !== null) ? $row->created_at->format("d-m-Y"):"-"}}</td>
                                     <td>{{($row->updated_at !== null) ? $row->updated_at->format("d-m-Y"):"-"}}</td>
                                     <td>

@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'Tukang Ikan',
-    'title_prefix' => 'Tukang Ikan - ',
+    'title' => 'Lele Bujang',
+    'title_prefix' => 'Lele Bujang - ',
     'title_postfix' => '',
 
     /*
